@@ -1,12 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cktom2idg5lta"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_41el3"]
-[ext_resource type="Script" path="res://Camera.gd" id="2_5ulex"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
+[ext_resource type="Script" path="res://Player/Camera.gd" id="2_5ulex"]
+[ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtu6"]
-albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvg5n"]
 size = Vector3(0.2, 0.2, 1)
@@ -22,7 +20,7 @@ script = ExtResource("1_41el3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_i2xu1")
-surface_material_override/0 = SubResource("StandardMaterial3D_xbtu6")
+surface_material_override/0 = ExtResource("2_6bwaj")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.22553, -0.6)
