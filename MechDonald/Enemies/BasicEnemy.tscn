@@ -12,7 +12,6 @@
 [node name="BasicEnemy" type="CharacterBody3D"]
 axis_lock_linear_y = true
 script = ExtResource("1_2d7ka")
-speed = 1
 
 [node name="Pivot" type="Node3D" parent="."]
 
