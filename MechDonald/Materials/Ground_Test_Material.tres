@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bvepha0qsftld"]
+
+[ext_resource type="Texture2D" uid="uid://bwql382ij5wxl" path="res://Assets/kenney_prototypetextures/Vector/texture_08.svg" id="1_bwefi"]
+
+[resource]
+albedo_color = Color(0, 0.619608, 0.00392157, 1)
+albedo_texture = ExtResource("1_bwefi")
+uv1_scale = Vector3(6, 4, 1)
