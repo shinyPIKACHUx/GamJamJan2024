@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://lfa1h4jkf0q4"]
+
+[ext_resource type="Texture2D" uid="uid://i677ldlke763" path="res://Assets/Models/Aliens/AlienTorpedo/BioTorpedo_AlbedoTransparency.png" id="1_hkx0v"]
+[ext_resource type="Texture2D" uid="uid://ddpi7tif1o8l6" path="res://Assets/Models/Aliens/AlienTorpedo/BioTorpedo_Emission.png" id="2_kgr38"]
+[ext_resource type="Texture2D" uid="uid://djtu2dl067ghg" path="res://Assets/Models/Aliens/AlienTorpedo/BioTorpedo_MetallicSmoothness.png" id="3_j1s1y"]
+[ext_resource type="Texture2D" uid="uid://b6hvfffrfrrdb" path="res://Assets/Models/Aliens/AlienTorpedo/BioTorpedo_Normal.png" id="4_3bkdk"]
+
+[resource]
+albedo_texture = ExtResource("1_hkx0v")
+metallic = 1.0
+metallic_texture = ExtResource("3_j1s1y")
+emission_enabled = true
+emission_texture = ExtResource("2_kgr38")
+normal_enabled = true
+normal_texture = ExtResource("4_3bkdk")

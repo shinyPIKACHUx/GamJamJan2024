@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://7tm28xvssxvy"]
+
+[ext_resource type="Texture2D" uid="uid://ch8k1lbsme8kf" path="res://Assets/Models/Aliens/AlienBoss/AlienDestroyer_AlbedoTransparency.png" id="1_aunse"]
+[ext_resource type="Texture2D" uid="uid://br2a2w7w633rp" path="res://Assets/Models/Aliens/AlienBoss/AlienDestroyer_Emission.png" id="2_eluit"]
+[ext_resource type="Texture2D" uid="uid://dvp7a23juc0mo" path="res://Assets/Models/Aliens/AlienBoss/AlienDestroyer_MetallicSmoothness.png" id="3_niewv"]
+[ext_resource type="Texture2D" uid="uid://cbehhwbr3r8ok" path="res://Assets/Models/Aliens/AlienBoss/AlienDestroyer_Normal.png" id="4_b4ptn"]
+
+[resource]
+albedo_texture = ExtResource("1_aunse")
+metallic = 1.0
+metallic_texture = ExtResource("3_niewv")
+emission_enabled = true
+emission_texture = ExtResource("2_eluit")
+normal_enabled = true
+normal_texture = ExtResource("4_b4ptn")
