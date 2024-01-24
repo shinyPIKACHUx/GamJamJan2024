@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=7 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
-[ext_resource type="Script" path="res://Player/Camera.gd" id="2_5ulex"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
@@ -35,12 +34,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_ptduo")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
-script = ExtResource("2_5ulex")
-lerp_speed = 1.0
-lerp_scale = 1.0
 
 [node name="CameraVisonTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
