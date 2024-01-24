@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
+[ext_resource type="Material" path="res://addons/simplegrasstextured/materials/grass.material" id="4_0s8ex"]
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {
@@ -17,8 +18,6 @@ point_count = 5
 albedo_color = Color(1, 0.533333, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ok4rj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg7if"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_scgv5"]
 size = Vector3(99.5684, 1, 99.2606)
@@ -42,7 +41,7 @@ autostart = true
 curve = SubResource("Curve3D_m4uej")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.912367, -0.00729159, -0.409307, -9.31322e-10, 0.99984, -0.0178117, 0.409371, -0.0162508, -0.912223, -23.9605, -0.211089, -13.1096)
+transform = Transform3D(-0.999904, 0.0138077, -8.73988e-08, 0.0138063, 0.9998, -0.0143942, -0.000198664, -0.0143928, -0.999897, -27.8921, -0.211035, -15.3182)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.009, 20, 0)
@@ -79,7 +78,7 @@ transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 material_override = ExtResource("2_u131b")
 mesh = SubResource("BoxMesh_ok4rj")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_lg7if")
+surface_material_override/0 = ExtResource("4_0s8ex")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)

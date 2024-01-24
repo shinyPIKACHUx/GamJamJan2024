@@ -1,27 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://u7acjc1objkr"]
+[gd_scene load_steps=4 format=3 uid="uid://u7acjc1objkr"]
 
 [ext_resource type="Script" path="res://Enemies/MoveTowardPlayer.gd" id="1_2d7ka"]
-[ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_uhhvl"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_bq21c"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_jmmnw"]
+[ext_resource type="PackedScene" uid="uid://dhw0tcgnbfu4t" path="res://Assets/Models/Aliens/AlienCrawler/alien_crawler.tscn" id="2_tjrby"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ecmhm"]
+radius = 2.16534
 
 [node name="BasicEnemy" type="CharacterBody3D"]
 axis_lock_linear_y = true
 script = ExtResource("1_2d7ka")
 
-[node name="Pivot" type="Node3D" parent="."]
-
-[node name="EnemyModel" type="MeshInstance3D" parent="Pivot"]
-mesh = SubResource("SphereMesh_bq21c")
-
-[node name="DirectionIndicator" type="MeshInstance3D" parent="Pivot/EnemyModel"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, -0.51855)
-mesh = SubResource("BoxMesh_jmmnw")
-surface_material_override/0 = ExtResource("2_uhhvl")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70219)
 shape = SubResource("SphereShape3D_ecmhm")
+
+[node name="AlienCrawler" parent="." instance=ExtResource("2_tjrby")]
