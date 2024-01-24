@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://u7acjc1objkr"]
+
+[ext_resource type="Script" path="res://Enemies/MoveTowardPlayer.gd" id="1_2d7ka"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bq21c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ecmhm"]
+
+[node name="BasicEnemy" type="CharacterBody3D"]
+script = ExtResource("1_2d7ka")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="EnemyModel" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_bq21c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ecmhm")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+aabb = AABB(-0.506, -0.493, -0.494, 1, 1, 1)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]
