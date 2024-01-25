@@ -13,7 +13,7 @@ points = PackedVector3Array(-0.5, -0.5, 0, -0.497651, -0.5, -0.0490407, -0.49246
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tymqh"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_41el3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
