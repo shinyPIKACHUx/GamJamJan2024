@@ -43,6 +43,8 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #@onready var camera = $Camera3D
 #@onready var ground_check = $GroundCheck
 
+var totalXP: float = 0.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#$CameraPivot/SpringArm3D.add_excluded_object(self)
@@ -58,6 +60,9 @@ func _unhandled_input(event):
 		cameraPivot.rotation.x = clamp(cameraPivot.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
 		#visionTarget.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		#visionTarget.rotation.x = clamp(visionTarget.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
+
+func _process(delta):
+	print_debug("currentXP: " + str(self.totalXP).pad_decimals(2))
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -137,6 +142,9 @@ func _physics_process(delta):
 		#velocity.z = move_toward(velocity.z, 0, speed)
 	#
 	#move_and_slide()
+
+func addXP(xp: float):
+	self.totalXP += xp
 
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO
