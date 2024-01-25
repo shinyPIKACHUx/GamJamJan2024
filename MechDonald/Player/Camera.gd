@@ -1,8 +1,9 @@
 extends Camera3D
 
-
-@onready var cameraVisionTargetNode : Node3D = $"../CameraVisonTarget"
+@onready var cameraPivotNode : Node3D = $"../CameraPivot"
+@onready var cameraVisionTargetNode : Node3D = $"../CameraPivot/CameraVisonTarget"
 @onready var cameraMoveTargetNode : Node3D = $"../CameraPivot/SpringArm3D/CameraMoveTarget"
+@onready var label : Label = $Label
 
 var cameraMoveTarget : Vector3
 
@@ -23,7 +24,7 @@ func update_position():
 	gp_current = cameraMoveTargetNode.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if update:
 		update_position()
 		update = false
@@ -32,6 +33,7 @@ func _process(_delta):
 	global_position = gp_previous.lerp(gp_current, f)
 	
 	look_at(cameraVisionTargetNode.global_position)
+	label.set_text("camera pivot rotation = %s" % cameraPivotNode.rotation)
 
 func _physics_process(_delta):
 	update = true

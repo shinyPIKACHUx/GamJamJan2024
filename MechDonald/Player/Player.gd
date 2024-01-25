@@ -39,6 +39,7 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #var movement = Vector3()
 
 @onready var cameraPivot = $CameraPivot
+@onready var visionTarget = $CameraVisonTarget
 #@onready var camera = $Camera3D
 #@onready var ground_check = $GroundCheck
 
@@ -55,6 +56,8 @@ func _unhandled_input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		cameraPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		cameraPivot.rotation.x = clamp(cameraPivot.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
+		#visionTarget.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
+		#visionTarget.rotation.x = clamp(visionTarget.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
 
 func _physics_process(delta):
 	# Add the gravity.
