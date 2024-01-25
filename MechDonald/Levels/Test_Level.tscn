@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://djnrb7ft3e7v3"]
+[gd_scene load_steps=11 format=3 uid="uid://djnrb7ft3e7v3"]
 
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="1_5hm5r"]
+[ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_74pn3"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_7cmgf"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
 
@@ -22,9 +23,12 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 
 [sub_resource type="Environment" id="Environment_r7v3o"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Level Test" type="Node3D"]
+script = ExtResource("1_74pn3")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
+speed = 10.0
+mouse_sensitivity = 0.05
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
