@@ -42,6 +42,8 @@ var movement = Vector3()
 @onready var camera = $Camera3D
 @onready var ground_check = $GroundCheck
 
+var totalXP: float = 0.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$CameraPivot/SpringArm3D.add_excluded_object(self)
@@ -55,6 +57,9 @@ func _unhandled_input(event):
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY_BASE))
 		cameraPivot.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY_BASE))
 		cameraPivot.rotation.x = clamp(cameraPivot.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
+
+func _process(delta):
+	print_debug("currentXP: " + str(self.totalXP).pad_decimals(2))
 
 func _physics_process(delta):
 	# get keyboard input
@@ -111,3 +116,6 @@ func _cameraPivotbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	return pos
+	
+func addXP(xp: float):
+	self.totalXP += xp

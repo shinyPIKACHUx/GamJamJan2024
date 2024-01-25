@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1l8lqisxq4xi"]
+
+[ext_resource type="Script" path="res://XPGem/XPGemTestSceneScript.gd" id="1_fl2e4"]
+
+[node name="XpGemTestScene" type="Node3D"]
+script = ExtResource("1_fl2e4")
+
+[node name="Target" type="Node3D" parent="."]
