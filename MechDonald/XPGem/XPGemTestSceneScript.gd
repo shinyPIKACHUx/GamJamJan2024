@@ -7,5 +7,3 @@ func _ready():
 	var gem = XPGemFactory.create(100, p.get_path())
 	gem.global_position = Vector3(0, 3, -10)
 	get_tree().root.add_child.call_deferred(gem)
-
-
