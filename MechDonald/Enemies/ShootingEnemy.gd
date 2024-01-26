@@ -2,10 +2,12 @@ class_name ShootingEnemy extends CharacterBody3D
 
 #speed of the mob m/s
 @export var speed = 2
+@export var shotSpeed = 5
+@export var bullet_scene: PackedScene
+@export var runAwayDist = 6
+@export var moveCloserDist = 8
 
 var playerRef
-var runAwayDist = 6
-var moveCloserDist = 8
 enum BEHAVIOR_STATE {MOVE_CLOSER, RUN_AWAY, SHOOT}
 var currentBehavior
 
@@ -36,7 +38,7 @@ func _physics_process(delta):
 		BEHAVIOR_STATE.RUN_AWAY:
 			position = position.move_toward(playerRef.position, delta * -speed)
 		BEHAVIOR_STATE.SHOOT:
-			print("Shoot!")
+			position = position
 
 # Called from the main scene
 func initialize(spawn_location, player):
@@ -45,6 +47,17 @@ func initialize(spawn_location, player):
 	
 	# Set position data
 	position = spawn_location
+
+func shoot():
+	if (currentBehavior == BEHAVIOR_STATE.SHOOT):
+		print("SHOOT")
+		var bullet = bullet_scene.instantiate()
+	
+		var bullet_spawn_location = get_node("BulletSpawnLocation")
+		var direction = bullet_spawn_location.global_position.direction_to(playerRef.global_position)
+		
+		get_tree().current_scene.add_child(bullet)
+		bullet.initialize(bullet_spawn_location.global_position, direction * shotSpeed)
 	
 func _on_visible_on_screen_enabler_3d_screen_exited():
 	queue_free();
