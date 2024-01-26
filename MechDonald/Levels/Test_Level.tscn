@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_74pn3"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_7cmgf"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
-[ext_resource type="PackedScene" uid="uid://c1l8lqisxq4xi" path="res://XPGem/XPGemTestScene.tscn" id="5_6ffia"]
+[ext_resource type="AudioStream" uid="uid://dq6br5jqwug56" path="res://Assets/Sounds/Effects/laser-gun-shot-sound-future-sci-fi_pixabay.mp3" id="6_htxbo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a77pk"]
 size = Vector3(40, 1, 40)
@@ -61,4 +61,9 @@ environment = SubResource("Environment_r7v3o")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 3, 0)
 
-[node name="XpGemTestScene" parent="." instance=ExtResource("5_6ffia")]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0725174, 0, -0.00969028)
+stream = ExtResource("6_htxbo")
+volume_db = -32.0
+autoplay = true
+bus = &"Effects"

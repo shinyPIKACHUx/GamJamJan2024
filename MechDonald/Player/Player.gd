@@ -39,7 +39,7 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #var movement = Vector3()
 
 @onready var cameraPivot = $CameraPivot
-@onready var visionTarget = $CameraVisonTarget
+@onready var visionTarget = $CameraPivot/CameraVisonTarget
 #@onready var camera = $Camera3D
 #@onready var ground_check = $GroundCheck
 
