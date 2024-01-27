@@ -50,11 +50,13 @@ func _ready():
 	#$CameraPivot/SpringArm3D.add_excluded_object(self)
 
 func _unhandled_input(event):
+	print("got unhandled input")
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	#get mouse input for camera rotation
 	if event is InputEventMouseMotion:
+		print("got mouse event")
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		cameraPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		cameraPivot.rotation.x = clamp(cameraPivot.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
