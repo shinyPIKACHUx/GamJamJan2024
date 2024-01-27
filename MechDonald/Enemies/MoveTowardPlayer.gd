@@ -27,5 +27,9 @@ func initialize(spawn_location, player):
 	# Set position data
 	position = spawn_location
 	
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("Player"):
+		playerRef.take_damage()
+	
 func _on_visible_on_screen_enabler_3d_screen_exited():
 	queue_free();

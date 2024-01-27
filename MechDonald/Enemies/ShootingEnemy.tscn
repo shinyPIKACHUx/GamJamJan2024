@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ygwruj05wuih"]
+
+[ext_resource type="Script" path="res://Enemies/ShootingEnemy.gd" id="1_ajvoe"]
+[ext_resource type="PackedScene" uid="uid://cydnse3vrdtnp" path="res://Enemies/EnemyBullet.tscn" id="2_dmff5"]
+[ext_resource type="PackedScene" uid="uid://dhw0tcgnbfu4t" path="res://Assets/Models/Aliens/AlienCrawler/alien_crawler.tscn" id="2_s6boq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5har3"]
+radius = 1.99925
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hg66k"]
+radius = 0.500974
+
+[node name="ShootingEnemy" type="CharacterBody3D"]
+axis_lock_linear_y = true
+script = ExtResource("1_ajvoe")
+speed = 4
+shotSpeed = 8
+bullet_scene = ExtResource("2_dmff5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.681752)
+shape = SubResource("SphereShape3D_5har3")
+
+[node name="AlienCrawler" parent="." instance=ExtResource("2_s6boq")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="BulletSpawnLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.97112)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_hg66k")
+
+[connection signal="timeout" from="Timer" to="." method="shoot"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
