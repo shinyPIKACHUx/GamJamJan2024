@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnrcud3orbdvr"]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer"]
-bus = &"BackgroundMusic"
+[node name="Music" type="AudioStreamPlayer"]
+bus = &"Music"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 bus = &"Noise"
