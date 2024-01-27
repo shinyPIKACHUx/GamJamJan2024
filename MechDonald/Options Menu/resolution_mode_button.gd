@@ -14,7 +14,6 @@ func _ready():
 	option_button.item_selected.connect(on_resolution_selected)
 	add_resolution_items()
 	
-	
 func add_resolution_items() -> void:
 	for resolution_size_text in RESOLUTION_DICTIONARY:
 		option_button.add_item(resolution_size_text)

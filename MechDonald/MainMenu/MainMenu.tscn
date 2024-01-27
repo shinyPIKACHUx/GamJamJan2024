@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbtkgwt383374"]
+[gd_scene load_steps=6 format=3 uid="uid://dbtkgwt383374"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_gotu7"]
+[ext_resource type="Texture2D" uid="uid://in1ldbepu1jr" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_09.png" id="2_nmn8g"]
 [ext_resource type="PackedScene" uid="uid://b8407gb5tytyp" path="res://Options Menu/options_menu.tscn" id="2_vy2ej"]
 
 [sub_resource type="SystemFont" id="SystemFont_lvy6s"]
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_nmn8g")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -92,3 +94,5 @@ text = "Exit Game"
 [node name="Options_Menu" parent="." instance=ExtResource("2_vy2ej")]
 visible = false
 layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
