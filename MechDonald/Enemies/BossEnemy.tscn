@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cylj0yvl14fbr"]
+
+[ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_nooug"]
+[ext_resource type="PackedScene" uid="uid://dlpwk00bxpm7i" path="res://Assets/Models/Aliens/AlienBoss/alien_boss.tscn" id="2_kbf5u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_utbix"]
+radius = 1.99925
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xjwhp"]
+radius = 0.500974
+
+[node name="BossEnemy" type="CharacterBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_nooug")
+speed = 5
+chargeSpeed = 15
+
+[node name="AlienBoss" parent="." instance=ExtResource("2_kbf5u")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.681752)
+shape = SubResource("SphereShape3D_utbix")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="TelegraphTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_xjwhp")
+
+[connection signal="timeout" from="MoveTimer" to="." method="telegraph"]
+[connection signal="timeout" from="TelegraphTimer" to="." method="charge"]
+[connection signal="timeout" from="ChargeTimer" to="." method="move_closer"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

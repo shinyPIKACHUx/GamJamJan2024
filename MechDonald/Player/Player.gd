@@ -145,6 +145,9 @@ func _physics_process(delta):
 
 func addXP(xp: float):
 	self.totalXP += xp
+	
+func take_damage():
+	print("Ouch!")
 
 func getXP():
 	return self.totalXP
