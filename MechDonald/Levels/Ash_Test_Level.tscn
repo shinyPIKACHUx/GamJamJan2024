@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://2sye00d40ots"]
+[gd_scene load_steps=10 format=3 uid="uid://c52e5sevkp568"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
-[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
+[ext_resource type="PackedScene" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {

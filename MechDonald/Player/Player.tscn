@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=11 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
+[ext_resource type="PackedScene" uid="uid://b2rr8u6hpnbev" path="res://UI/ui_control.tscn" id="4_q6qyf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
 
@@ -47,6 +48,10 @@ script = ExtResource("3_ht4nx")
 [node name="Label" type="Label" parent="Camera3D"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="UI_Container" type="CanvasLayer" parent="Camera3D"]
+
+[node name="UI_Control" parent="Camera3D/UI_Container" instance=ExtResource("4_q6qyf")]
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)

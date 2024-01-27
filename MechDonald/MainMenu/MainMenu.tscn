@@ -94,5 +94,3 @@ text = "Exit Game"
 [node name="Options_Menu" parent="." instance=ExtResource("2_vy2ej")]
 visible = false
 layout_mode = 1
-
-[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]

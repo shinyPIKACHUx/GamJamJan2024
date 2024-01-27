@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://khsnif1cpw4j"]
+
+[sub_resource type="SystemFont" id="SystemFont_rs8m1"]
+font_names = PackedStringArray("Impact")
+
+[node name="XP_Label" type="HBoxContainer"]
+offset_right = 39.0
+offset_bottom = 21.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_rs8m1")
+theme_override_font_sizes/font_size = 24
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 2
