@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhw0tcgnbfu4t"]
+
+[ext_resource type="PackedScene" uid="uid://bulnjinhi25t0" path="res://Assets/Models/Aliens/AlienCrawler/AlienCrawler.glb" id="1_wa0qy"]
+[ext_resource type="Material" uid="uid://c1sdkts52kr2a" path="res://Assets/Models/Aliens/AlienCrawler/AlienCrawlerMat.tres" id="2_rx02m"]
+
+[node name="AlienCrawler" instance=ExtResource("1_wa0qy")]
+
+[node name="InsectoidFighter" parent="." index="0"]
+transform = Transform3D(-0.01, -8.74228e-10, 3.82137e-17, 0, -4.37114e-10, -0.01, 8.74228e-10, -0.01, 4.37114e-10, 0, 0, 0)
+material_override = ExtResource("2_rx02m")

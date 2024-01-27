@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccr7yjxdoji02"]
+
+[ext_resource type="PackedScene" uid="uid://c1lrmutdc2d12" path="res://Assets/Models/Aliens/AlienTorpedo/AlienTorpedo.glb" id="1_qprhw"]
+[ext_resource type="Material" uid="uid://lfa1h4jkf0q4" path="res://Assets/Models/Aliens/AlienTorpedo/AlienTorpedo.tres" id="2_f48ik"]
+
+[node name="AlienTorpedo" instance=ExtResource("1_qprhw")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(-0.01, -8.74228e-10, 3.82137e-17, 0, -4.37114e-10, -0.01, 8.74228e-10, -0.01, 4.37114e-10, 0, 0, 0)
+material_override = ExtResource("2_f48ik")

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c1sdkts52kr2a"]
+
+[ext_resource type="Texture2D" uid="uid://bta77nk8lixt3" path="res://Assets/Models/Aliens/AlienCrawler/AlienFighter_AlbedoTransparency.png" id="1_dtlq8"]
+[ext_resource type="Texture2D" uid="uid://bxof7x1cf0fp1" path="res://Assets/Models/Aliens/AlienCrawler/AlienFighter_Emission.png" id="2_beho8"]
+[ext_resource type="Texture2D" uid="uid://cwf3u8aa31m1s" path="res://Assets/Models/Aliens/AlienCrawler/AlienFighter_MetallicSmoothness.png" id="3_bx1mo"]
+[ext_resource type="Texture2D" uid="uid://b1xmp52eay0cf" path="res://Assets/Models/Aliens/AlienCrawler/AlienFighter_Normal.png" id="4_ghqvv"]
+
+[resource]
+albedo_texture = ExtResource("1_dtlq8")
+metallic = 1.0
+metallic_texture = ExtResource("3_bx1mo")
+emission_enabled = true
+emission_texture = ExtResource("2_beho8")
+normal_enabled = true
+normal_texture = ExtResource("4_ghqvv")

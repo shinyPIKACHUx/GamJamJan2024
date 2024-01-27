@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlpwk00bxpm7i"]
+
+[ext_resource type="PackedScene" uid="uid://cesdqfmiyngio" path="res://Assets/Models/Aliens/AlienBoss/AlienBoss.glb" id="1_ecpim"]
+[ext_resource type="Material" uid="uid://7tm28xvssxvy" path="res://Assets/Models/Aliens/AlienBoss/AlienBossMat.tres" id="2_0uicb"]
+
+[node name="AlienBoss" instance=ExtResource("1_ecpim")]
+
+[node name="AlienDestroyer" parent="." index="0"]
+transform = Transform3D(-0.01, -8.74228e-10, 3.82137e-17, 0, -4.37114e-10, -0.01, 8.74228e-10, -0.01, 4.37114e-10, 0, 0, 0)
+material_override = ExtResource("2_0uicb")

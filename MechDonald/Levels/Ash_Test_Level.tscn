@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://2sye00d40ots"]
+
+[ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
+[ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
+[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
+
+[sub_resource type="Curve3D" id="Curve3D_m4uej"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -27.8921, -0.211035, -15.3182, 0, 0, 0, 0, 0, 0, -27.8921, 0.22207, 14.7675, 0, 0, 0, 0, 0, 0, 27.8049, 0.329248, 14.7675, 0, 0, 0, 0, 0, 0, 28.1135, -0.266455, -15.781, 0, 0, 0, 0, 0, 0, -28.0464, -0.229956, -15.4725),
+"tilts": PackedFloat32Array(0.0138082, 0, -2.82535, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ruukv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjvpn"]
+albedo_color = Color(1, 0.533333, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ok4rj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scgv5"]
+size = Vector3(99.5684, 1, 99.2606)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jqyg4"]
+
+[node name="AshTestLevel" type="Node3D"]
+script = ExtResource("1_srfco")
+mob_scene = ExtResource("3_5gfjy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_energy = 16.0
+omni_range = 4096.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_m4uej")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.999904, 0.0138077, -8.73989e-08, 0.0138063, 0.9998, -0.0143942, -0.000198664, -0.0143928, -0.999897, -27.8921, -0.211035, -15.3182)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.009, 20, 0)
+
+[node name="Cylinders" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 12)
+mesh = SubResource("CylinderMesh_ruukv")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjvpn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 12)
+mesh = SubResource("CylinderMesh_ruukv")
+skeleton = NodePath("../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjvpn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -15.5)
+mesh = SubResource("CylinderMesh_ruukv")
+skeleton = NodePath("../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjvpn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -15.5)
+mesh = SubResource("CylinderMesh_ruukv")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjvpn")
+
+[node name="GroundNode" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="GroundMesh" type="MeshInstance3D" parent="GroundNode"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+material_override = ExtResource("2_u131b")
+mesh = SubResource("BoxMesh_ok4rj")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)
+shape = SubResource("BoxShape3D_scgv5")
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("SphereMesh_jqyg4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_mob_timer_timeout"]
