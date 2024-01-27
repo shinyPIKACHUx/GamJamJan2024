@@ -149,9 +149,9 @@ func addXP(xp: float):
 func take_damage():
 	print("Ouch!")
 
-func getXP(xp: float):
-	var player = get_tree().get_nodes_in_group("Player")[0]
+func getXP():
 	return self.totalXP
+
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO
 	#pos.y = sin(time * BOB_FREQ) * BOB_AMP
