@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Area3D
 
 
 func _physics_process(delta):
