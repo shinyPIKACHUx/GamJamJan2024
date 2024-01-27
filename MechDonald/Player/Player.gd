@@ -145,6 +145,9 @@ func _physics_process(delta):
 
 func addXP(xp: float):
 	self.totalXP += xp
+	
+func take_damage():
+	print("Ouch!")
 
 func getXP(xp: float):
 	var player = get_tree().get_nodes_in_group("Player")[0]

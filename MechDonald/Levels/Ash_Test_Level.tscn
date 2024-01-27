@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
-[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
-[ext_resource type="PackedScene" uid="uid://dwgfwtxdk6rux" path="res://Audio/Tools/EnemyNoiseGenerator.tscn" id="4_qbm55"]
+
+[ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="2_wam0s"]
+[ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="4_fxfgv"]
+
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {
@@ -22,11 +24,8 @@ albedo_color = Color(1, 0.533333, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_scgv5"]
 size = Vector3(99.5684, 1, 99.2606)
 
-[sub_resource type="SphereMesh" id="SphereMesh_jqyg4"]
-
 [node name="AshTestLevel" type="Node3D"]
 script = ExtResource("1_srfco")
-mob_scene = ExtResource("3_5gfjy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -34,7 +33,7 @@ light_energy = 16.0
 omni_range = 4096.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 50.85
 autostart = true
 
 [node name="SpawnPath" type="Path3D" parent="."]
@@ -83,11 +82,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)
 shape = SubResource("BoxShape3D_scgv5")
 
-[node name="EnemyNoiseGenerator" parent="." instance=ExtResource("4_qbm55")]
+[node name="Player" parent="." instance=ExtResource("4_fxfgv")]
 
-[node name="Player" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("SphereMesh_jqyg4")
+[node name="BossEnemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("2_wam0s")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20.1144)
+playerRef = NodePath("../Player")
 
 [connection signal="timeout" from="Timer" to="." method="_on_mob_timer_timeout"]
