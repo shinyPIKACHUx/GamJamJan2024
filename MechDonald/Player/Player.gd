@@ -145,6 +145,9 @@ func _physics_process(delta):
 
 func addXP(xp: float):
 	self.totalXP += xp
+	
+func take_damage():
+	print("Ouch!")
 
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO

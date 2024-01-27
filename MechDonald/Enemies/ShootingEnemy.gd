@@ -57,7 +57,11 @@ func shoot():
 		var direction = bullet_spawn_location.global_position.direction_to(playerRef.global_position)
 		
 		get_tree().current_scene.add_child(bullet)
-		bullet.initialize(bullet_spawn_location.global_position, direction * shotSpeed)
+		bullet.initialize(playerRef, bullet_spawn_location.global_position, direction * shotSpeed)
 	
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("Player"):
+		playerRef.take_damage()
+
 func _on_visible_on_screen_enabler_3d_screen_exited():
 	queue_free();
