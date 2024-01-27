@@ -1,4 +1,4 @@
-class_name ShootingEnemy extends Area3D
+class_name ShootingEnemy extends CharacterBody3D
 
 #speed of the mob m/s
 @export var speed = 2

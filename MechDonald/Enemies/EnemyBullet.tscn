@@ -1,19 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://cydnse3vrdtnp"]
+[gd_scene load_steps=6 format=3 uid="uid://cydnse3vrdtnp"]
 
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="1_02sil"]
 [ext_resource type="Script" path="res://Enemies/EnemyBullet.gd" id="1_hvua2"]
-[ext_resource type="Script" path="res://Enemies/DamagePlayerOnContact.gd" id="3_ry5ij"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7vmm8"]
+radius = 0.500974
 
 [sub_resource type="SphereMesh" id="SphereMesh_i7ig1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgg8x"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7vmm8"]
-radius = 0.500974
-
-[node name="EnemyBullet" type="Area3D"]
+[node name="EnemyBullet" type="CharacterBody3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_hvua2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7vmm8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_02sil")
@@ -25,10 +27,4 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_7vmm8")
-script = ExtResource("3_ry5ij")
-
-[connection signal="body_entered" from="." to="CollisionShape3D" method="_on_collision"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
