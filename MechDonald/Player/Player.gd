@@ -146,6 +146,9 @@ func _physics_process(delta):
 func addXP(xp: float):
 	self.totalXP += xp
 
+func getXP(xp: float):
+	var player = get_tree().get_nodes_in_group("Player")[0]
+	return self.totalXP
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO
 	#pos.y = sin(time * BOB_FREQ) * BOB_AMP

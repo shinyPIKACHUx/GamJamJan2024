@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://dv3sbwhw2ewmr"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://dv3sbwhw2ewmr"]
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_2s4uf"]
+resource_name = "Amplify"
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_iwdwq"]
 resource_name = "Amplify"
@@ -13,6 +16,8 @@ resource_name = "Amplify"
 resource_name = "Amplify"
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectAmplify_2s4uf")
+bus/0/effect/0/enabled = true
 bus/1/name = &"BackgroundMusic"
 bus/1/solo = false
 bus/1/mute = false

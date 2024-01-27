@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://2sye00d40ots"]
+[gd_scene load_steps=11 format=3 uid="uid://2sye00d40ots"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_5gfjy"]
+[ext_resource type="PackedScene" uid="uid://dwgfwtxdk6rux" path="res://Audio/Tools/EnemyNoiseGenerator.tscn" id="4_qbm55"]
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {
@@ -81,6 +82,8 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)
 shape = SubResource("BoxShape3D_scgv5")
+
+[node name="EnemyNoiseGenerator" parent="." instance=ExtResource("4_qbm55")]
 
 [node name="Player" type="Node3D" parent="."]
 

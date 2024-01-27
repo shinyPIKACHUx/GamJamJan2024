@@ -1,14 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://u7acjc1objkr"]
+[gd_scene load_steps=4 format=3 uid="uid://u7acjc1objkr"]
 
 [ext_resource type="Script" path="res://Enemies/MoveTowardPlayer.gd" id="1_2d7ka"]
 [ext_resource type="PackedScene" uid="uid://dhw0tcgnbfu4t" path="res://Assets/Models/Aliens/AlienCrawler/alien_crawler.tscn" id="2_tjrby"]
-[ext_resource type="PackedScene" uid="uid://clv3usfdn3j6v" path="res://Audio/Tools/RandomPlayAudio.tscn" id="3_aw0um"]
-[ext_resource type="AudioStream" uid="uid://cr846ffgx8h45" path="res://Assets/Sounds/Voices/alien-voice_pixabay.mp3" id="4_6gts3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ecmhm"]
 radius = 2.16534
 
-[node name="BasicEnemy" type="CharacterBody3D"]
+[node name="BasicEnemy" type="CharacterBody3D" groups=["Enemy"]]
 axis_lock_linear_y = true
 script = ExtResource("1_2d7ka")
 
@@ -17,8 +15,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70219)
 shape = SubResource("SphereShape3D_ecmhm")
 
 [node name="AlienCrawler" parent="." instance=ExtResource("2_tjrby")]
-
-[node name="RandomPlayAudio" parent="." instance=ExtResource("3_aw0um")]
-bus = &"Voices"
-chanceToPlay = 0.1
-audioFiles = Array[AudioStream]([ExtResource("4_6gts3")])
