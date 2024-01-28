@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 curve = SubResource("Curve3D_g1suw")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.99989, 0.0138954, 0.00518046, 0.0138058, 0.99976, -0.0169577, -0.00541485, -0.0168843, -0.999843, -17.5259, -0.210938, -11.4197)
+transform = Transform3D(-0.99989, 0.0138954, 0.00518141, 0.0138058, 0.99976, -0.0169577, -0.00541581, -0.0168843, -0.999843, -17.5259, -0.210938, -11.4197)
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="BossSpawnTimer" to="." method="_on_boss_spawn_timer_timeout"]
