@@ -2,11 +2,11 @@
 
 [ext_resource type="AudioStream" uid="uid://sridihphlmab" path="res://Assets/Sounds/Songs/happy-funny-kids_song_pixabay.mp3" id="1_h4cmm"]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer"]
+[node name="Music" type="AudioStreamPlayer"]
 stream = ExtResource("1_h4cmm")
 volume_db = -30.0
 autoplay = true
-bus = &"BackgroundMusic"
+bus = &"Music"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 bus = &"Noise"
