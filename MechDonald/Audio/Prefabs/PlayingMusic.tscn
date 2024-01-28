@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnrcud3orbdvr"]
+
+[ext_resource type="AudioStream" uid="uid://dybf3isgin25h" path="res://Assets/Sounds/Songs/your-own-personal-hell_pixabay.mp3" id="1_ayybr"]
+[ext_resource type="AudioStream" uid="uid://c032kvuq3nrko" path="res://Assets/Sounds/Voices/mooing-cow-122255.mp3" id="2_xtcq6"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_ayybr")
+pitch_scale = 2.25
+autoplay = true
+bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xtcq6")
+bus = &"Noise"
