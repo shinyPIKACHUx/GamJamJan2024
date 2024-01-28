@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=18 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Player/Socket.gd" id="5_bk063"]
 [ext_resource type="Script" path="res://Player/SocketManager.gd" id="5_nnwut"]
 [ext_resource type="Script" path="res://Player/Pause.gd" id="5_p1mlb"]
+[ext_resource type="PackedScene" uid="uid://x5k8v7cgsop7" path="res://Audio/Prefabs/TakingDamageAudioPlayer.tscn" id="9_fkroa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1publ"]
 
@@ -163,6 +164,8 @@ script = ExtResource("5_bk063")
 [node name="RayCast3D2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
 target_position = Vector3(0, 0, -1)
+
+[node name="TakingDamageAudioPlayer" parent="." instance=ExtResource("9_fkroa")]
 
 [connection signal="pressed" from="Camera3D/UI_Container/Pause/MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Resume" to="Camera3D/UI_Container/Pause" method="_on_resume_pressed"]
 [connection signal="pressed" from="Camera3D/UI_Container/Pause/MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Exit to Menu" to="Camera3D/UI_Container/Pause" method="_on_exit_to_menu_pressed"]

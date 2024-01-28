@@ -1,11 +1,11 @@
 extends Node
 
 @export var audioFilesMap: Dictionary = {
-	"Cow": "res://Assets/Sounds/Voices/mooing-cow-122255.mp3",
-	"Pig": "res://Assets/Sounds/Voices/pig-sound-43195.mp3",
-	"Chicken": "res://Assets/Sounds/Voices/chicken-single-alarm-call-6056.mp3",
-	"Duck": "res://Assets/Sounds/Voices/duck-quack-112941.mp3",
-	"Sheep": "res://Assets/Sounds/Voices/sheep-122256.mp3"
+	"cow": load("res://Assets/Sounds/Voices/mooing-cow-122255.mp3"),
+	"pig": load("res://Assets/Sounds/Voices/pig-sound-43195.mp3"),
+	"chicken": load("res://Assets/Sounds/Voices/chicken-single-alarm-call-6056.mp3"),
+	"duck": load("res://Assets/Sounds/Voices/duck-quack-112941.mp3"),
+	"sheep": load("res://Assets/Sounds/Voices/sheep-122256.mp3")
 }
 
 var audioPlayers: Dictionary

@@ -18,15 +18,15 @@ var playIndex: int
 var audioNodeOnObject: Node
 
 func _ready():
-	self.maxLength = self.possibleVoices.size()
+	self.maxLength = self.possibleSounds.size()
 	if (maxLength == 0):
-		printerr("EnemyVoiceGenerator requires at least 1 sound to be able to play. None given.")
+		print("EnemyVoiceGenerator requires at least 1 sound to be able to play. None given.")
 	self.reset()
 
 func reset():
 	self.playing = false
 	self.playIndex = randi_range(0, maxLength - 1)
-	self.audioDuration = self.possibleVoices[self.playIndex].get_length()
+	self.audioDuration = self.possibleSounds[self.playIndex].get_length()
 	self.secondsBetweenPlayChecks = 1 / self.frequency
 	self.audioTimer = 0
 	self.frequencyTimer = 0
@@ -56,7 +56,7 @@ func attemptToPlay():
 		self.audioNodeOnObject = AudioStreamPlayerFactory.create(
 			self.generatedNodeName,
 			self.audioType,
-			self.possibleVoices[self.playIndex],
+			self.possibleSounds[self.playIndex],
 			busToUse
 		)
 		obj.add_child(self.audioNodeOnObject)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2sye00d40ots"]
+[gd_scene load_steps=12 format=3 uid="uid://2sye00d40ots"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_mnjxw"]
@@ -83,7 +83,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)
 shape = SubResource("BoxShape3D_scgv5")
 
-[node name="Player" parent="." instance=ExtResource("4_fxfgv")]
+[node name="Player" parent="." node_paths=PackedStringArray("upgrade_slots") instance=ExtResource("4_fxfgv")]
+upgrade_slots = [null, null, null, null, null]
 
 [node name="BossEnemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("2_wam0s")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20.1144)

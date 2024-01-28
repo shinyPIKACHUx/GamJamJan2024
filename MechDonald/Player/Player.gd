@@ -33,6 +33,7 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 
 @export var upgrade_array : Array[PackedScene]
 @export var upgrade_slots : Array[Node3D]
+var UpgradesGained: Array[String]
 
 #Egg Gun
 @export var egg_fire_delay : float = 1.0
@@ -50,6 +51,7 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #var gravity_direction = Vector3()
 #var movement = Vector3()
 
+@onready var takingDamageAudioPlayer = $TakingDamageAudioPlayer
 @onready var cameraPivot = $CameraPivot
 @onready var visionTarget = $CameraPivot/CameraVisonTarget
 #@onready var camera = $Camera3D
@@ -165,6 +167,7 @@ func upgrade():
 	var animal_scene = upgrade_array.pick_random()
 	if (!upgrade_slots.is_empty()):
 		# Create new animal
+		self.UpgradesGained.append(animal_scene.name)
 		var animal = animal_scene.instantiate()
 		
 		var animal_spawn_location = upgrade_slots.pop_front()
@@ -173,6 +176,7 @@ func upgrade():
 	
 func take_damage():
 	print("Ouch!")
+	takingDamageAudioPlayer.playAnimalNoises(self.UpgradesGained)
 
 func getXP():
 	return self.totalXP
