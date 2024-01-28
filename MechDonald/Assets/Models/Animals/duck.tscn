@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bef8qo44qhj7c"]
+
+[ext_resource type="PackedScene" uid="uid://cnkvmx4nehsy" path="res://Assets/Models/Animals/AnimalModels/Duck.glb" id="1_w4alk"]
+[ext_resource type="Script" path="res://Player/Upgrades/DuckUpgrade.gd" id="2_38k8y"]
+
+[node name="Duck" instance=ExtResource("1_w4alk")]
+script = ExtResource("2_38k8y")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://sn4wl80efisr"]
+
+[ext_resource type="PackedScene" uid="uid://t1s6nqaeo5f1" path="res://Assets/Models/Animals/AnimalModels/Sheep.glb" id="1_6ap0n"]
+[ext_resource type="Script" path="res://Player/Animal Components/AnimalPart.gd" id="2_1nl3h"]
+[ext_resource type="PackedScene" uid="uid://dnxnxalp6dbcw" path="res://Player/Animal Components/Fart_bullet.tscn" id="3_oy5kq"]
+
+[node name="Sheep" instance=ExtResource("1_6ap0n")]
+script = ExtResource("2_1nl3h")
+bullet = ExtResource("3_oy5kq")
+
+[node name="ArmSocket" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.4)
+target_position = Vector3(0, 0, -5)
+
+[node name="LegSocket" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

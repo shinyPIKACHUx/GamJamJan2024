@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2rr8u6hpnbev"]
+[gd_scene load_steps=4 format=3 uid="uid://b2rr8u6hpnbev"]
 
 [ext_resource type="PackedScene" uid="uid://khsnif1cpw4j" path="res://UI/xp_label.tscn" id="1_avqmg"]
 [ext_resource type="Script" path="res://UI/ui_control.gd" id="1_n5kjh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5c7f"]
+bg_color = Color(0.94902, 0, 0, 1)
 
 [node name="UI_Control" type="Control"]
 layout_mode = 3
@@ -35,5 +38,13 @@ layout_mode = 2
 
 [node name="Label" parent="MarginContainer/VBoxContainer/XP_Label" index="0"]
 text = ""
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 32)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_w5c7f")
+step = 1.0
+value = 1.0
+rounded = true
 
 [editable path="MarginContainer/VBoxContainer/XP_Label"]

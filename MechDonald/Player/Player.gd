@@ -31,6 +31,18 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #@export var jump_total = 2.0 
 @export var gravity = GRAVITY_BASE
 
+@export var upgrade_array : Array[PackedScene]
+@export var upgrade_slots : Array[Node3D]
+
+#Egg Gun
+@export var egg_fire_delay : float = 1.0
+@export var egg_damage : float = 1.0
+
+#Gas Cloud
+@export var fart_duration : float = 1.0
+@export var fart_tick_speed : float = 0.1
+@export var fart_size_modifier : float = 1.0
+
 #var jump_count = 0
 #var full_contact = false
 #var cam_accel = 40
@@ -42,8 +54,11 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 @onready var visionTarget = $CameraPivot/CameraVisonTarget
 #@onready var camera = $Camera3D
 #@onready var ground_check = $GroundCheck
-
+@export var healthMax : float = 100.0
+var healthCurrent : float = healthMax - 10
 var totalXP: float = 0.0
+
+var invuln: float = 3.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -146,11 +161,25 @@ func _physics_process(delta):
 func addXP(xp: float):
 	self.totalXP += xp
 	
+func upgrade():
+	var animal_scene = upgrade_array.pick_random()
+	if (!upgrade_slots.is_empty()):
+		# Create new animal
+		var animal = animal_scene.instantiate()
+		
+		var animal_spawn_location = upgrade_slots.pop_front()
+		
+		animal_spawn_location.add_child(animal)
+	
 func take_damage():
 	print("Ouch!")
 
 func getXP():
 	return self.totalXP
+
+func getHP():
+	return self.healthCurrent
+
 
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO

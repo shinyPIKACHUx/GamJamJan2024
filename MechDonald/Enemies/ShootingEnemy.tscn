@@ -11,6 +11,7 @@ radius = 1.99925
 radius = 0.500974
 
 [node name="ShootingEnemy" type="CharacterBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 axis_lock_linear_y = true
 script = ExtResource("1_ajvoe")
 speed = 4
@@ -32,7 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.97112)
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_hg66k")
 
 [connection signal="timeout" from="Timer" to="." method="shoot"]
