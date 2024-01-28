@@ -11,7 +11,7 @@
 script = ExtResource("1_0xplb")
 audioType = 2
 busToUse = 4
-possibleVoices = Array[AudioStream]([ExtResource("2_hrm0e"), ExtResource("3_miwis"), ExtResource("4_jkery"), ExtResource("5_axxrt"), ExtResource("6_remoq")])
+possibleSounds = Array[AudioStream]([ExtResource("2_hrm0e"), ExtResource("3_miwis"), ExtResource("4_jkery"), ExtResource("5_axxrt"), ExtResource("6_remoq")])
 frequency = 0.5
 chanceToPlay = 0.5
 generatedNodeName = "Player_AnimalNoiseGeneratorNode"

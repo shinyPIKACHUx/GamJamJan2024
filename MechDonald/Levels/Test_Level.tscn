@@ -72,6 +72,5 @@ targetNodePath = NodePath("../CharacterBody3D")
 slowlyApproachRate = 0.25
 
 [node name="AnimalNoiseGenerator" parent="." instance=ExtResource("7_h4oaf")]
-busToUse = 0
 
 [node name="Music" parent="." instance=ExtResource("7_p11nf")]

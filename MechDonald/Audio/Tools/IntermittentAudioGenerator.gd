@@ -2,7 +2,7 @@ extends Node3D
 
 @export var audioType: Enums.AudioStreamPlayerEnum = Enums.AudioStreamPlayerEnum.AudioStreamPlayer
 @export var busToUse : Enums.BusEnum = Enums.BusEnum.Master
-@export var possibleVoices: Array[AudioStream] # sets possible voices & noises enemies can make
+@export var possibleSounds: Array[AudioStream] # sets possible voices & noises enemies can make
 @export var frequency: float # number of times per second to attempt to play audio if not playing audio
 @export var chanceToPlay: float # 0-1. Probability to play audio when attempting to play audio
 @export var generatedNodeName: String = "IntermittentAudioGeneratorNode"
