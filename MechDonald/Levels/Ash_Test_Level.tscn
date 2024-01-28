@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="2_wam0s"]
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="4_fxfgv"]
+[ext_resource type="Script" path="res://Player/Pause.gd" id="5_yihbm"]
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {
@@ -86,5 +87,24 @@ shape = SubResource("BoxShape3D_scgv5")
 
 [node name="BossEnemy" parent="." instance=ExtResource("2_wam0s")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20.1144)
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_yihbm")
+
+[node name="PauseBackground" type="ColorRect" parent="Pause"]
+self_modulate = Color(0.0823529, 0.0352941, 0.0156863, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 0.34902)
 
 [connection signal="timeout" from="Timer" to="." method="_on_mob_timer_timeout"]

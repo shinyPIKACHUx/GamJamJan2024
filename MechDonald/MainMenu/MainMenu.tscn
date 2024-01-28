@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbtkgwt383374"]
+
+[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_gotu7"]
+[ext_resource type="Texture2D" uid="uid://in1ldbepu1jr" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_09.png" id="2_nmn8g"]
+[ext_resource type="PackedScene" uid="uid://crvtjydolm0hl" path="res://Audio/Scenes/MainMenu_Audio.tscn" id="2_qoqm3"]
+[ext_resource type="PackedScene" uid="uid://b8407gb5tytyp" path="res://Options Menu/options_menu.tscn" id="2_vy2ej"]
+
+[sub_resource type="SystemFont" id="SystemFont_lvy6s"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_o5u32"]
+font_names = PackedStringArray("Impact")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gotu7")
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("2_qoqm3")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nmn8g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separator1" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_lvy6s")
+theme_override_font_sizes/font_size = 64
+text = "Old MechDonald"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_o5u32")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="Options_Buton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_o5u32")
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_o5u32")
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Made by Ashley Ramsey, Alex Wissing, Schuyler Rhodes, and Alan Godfrey"
+
+[node name="Options_Menu" parent="." instance=ExtResource("2_vy2ej")]
+visible = false
+layout_mode = 1

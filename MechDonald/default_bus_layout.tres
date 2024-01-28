@@ -1,0 +1,52 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://dv3sbwhw2ewmr"]
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_2s4uf"]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_iwdwq"]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_xsagp"]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_ooctl"]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_nlb3n"]
+resource_name = "Amplify"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectAmplify_2s4uf")
+bus/0/effect/0/enabled = true
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectAmplify_iwdwq")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Effects"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectAmplify_xsagp")
+bus/2/effect/0/enabled = true
+bus/3/name = &"Noise"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectAmplify_ooctl")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Voices"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectAmplify_nlb3n")
+bus/4/effect/0/enabled = true

@@ -51,10 +51,11 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #var movement = Vector3()
 
 @onready var cameraPivot = $CameraPivot
-@onready var visionTarget = $CameraVisonTarget
+@onready var visionTarget = $CameraPivot/CameraVisonTarget
 #@onready var camera = $Camera3D
 #@onready var ground_check = $GroundCheck
-
+@export var healthMax : float = 100.0
+var healthCurrent : float = healthMax - 10
 var totalXP: float = 0.0
 
 var invuln: float = 3.0
@@ -172,6 +173,13 @@ func upgrade():
 	
 func take_damage():
 	print("Ouch!")
+
+func getXP():
+	return self.totalXP
+
+func getHP():
+	return self.healthCurrent
+
 
 #func _cameraPivotbob(time) -> Vector3:
 	#var pos = Vector3.ZERO

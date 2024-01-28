@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwgfwtxdk6rux"]
+
+[ext_resource type="Script" path="res://Audio/Tools/EnemyNoiseGenerator.gd" id="1_oi6ud"]
+[ext_resource type="AudioStream" uid="uid://xru3x6qe82oa" path="res://Assets/Sounds/Voices/alien-voice_pixabay-1.mp3" id="2_k075h"]
+[ext_resource type="AudioStream" uid="uid://bphv8ckgm7258" path="res://Assets/Sounds/Voices/alien-voice_pixabay-2.mp3" id="3_fgqdj"]
+[ext_resource type="AudioStream" uid="uid://djwv43axm8y2t" path="res://Assets/Sounds/Voices/alien-voice_pixabay-3.mp3" id="4_opmpy"]
+[ext_resource type="AudioStream" uid="uid://chpfe2ee4wykd" path="res://Assets/Sounds/Voices/alien-voice_pixabay-4.mp3" id="5_7ggrb"]
+
+[node name="EnemyNoiseGenerator" type="Node3D"]
+script = ExtResource("1_oi6ud")
+possibleNoises = Array[AudioStream]([ExtResource("2_k075h"), ExtResource("3_fgqdj"), ExtResource("4_opmpy"), ExtResource("5_7ggrb")])
+frequency = 0.5
+chanceToPlay = 0.5
