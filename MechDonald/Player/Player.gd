@@ -169,13 +169,12 @@ func addXP(xp: float):
 	self.totalXP += xp
 	if self.totalXP >= 200:
 		self.totalXP -= 200
-		upgrade()
+		#upgrade()
 	
 func upgrade():
 	var animal_scene = upgrade_array.pick_random()
 	if (!upgrade_slots.is_empty()):
 		# Create new animal
-		self.UpgradesGained.append(animal_scene.name)
 		var animal = animal_scene.instantiate()
 		
 		var animal_spawn_location = upgrade_slots.pop_front()
@@ -184,7 +183,7 @@ func upgrade():
 	
 func take_damage(damage):
 	self.healthCurrent -= damage
-	takingDamageAudioPlayer.playAnimalNoises(self.UpgradesGained)
+	#takingDamageAudioPlayer.playAnimalNoises(self.UpgradesGained)
 	if self.healthCurrent <= 0:
 		get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")
 	

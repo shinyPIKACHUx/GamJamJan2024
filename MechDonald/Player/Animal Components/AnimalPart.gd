@@ -6,6 +6,8 @@ extends Node3D
 @onready var rayCast : RayCast3D = $RayCast3D
 @onready var timer : Timer = $Timer
 
+var fireDuration: float = 0.0
+
 var bulletInstance
 var canFire : bool = true
 
@@ -13,19 +15,14 @@ func _ready():
 	timer.wait_time = FireRateTimer
 
 func _physics_process(delta):
-	if rayCast.is_colliding():
-		var object = rayCast.get_collider()
-		if object.is_in_group("Enemy"):
-			fire_bullets()
-
-func fire_bullets():
-	if canFire:
+	print("checking firing bullets")
+	self.fireDuration += delta
+	if (self.fireDuration >= self.FireRateTimer):
+		print("firing bullets")
 		bulletInstance = bullet.instantiate()
-		bulletInstance.position = global_position
-		bulletInstance.transform.basis = global_transform.basis
+		bulletInstance.position = rayCast.global_position
+		bulletInstance.transform.basis = rayCast.global_transform.basis
 		get_parent().add_child(bulletInstance)
-		canFire = false
-
 
 func _on_timer_timeout():
 	canFire = true
