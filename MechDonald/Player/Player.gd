@@ -57,6 +57,8 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 
 var totalXP: float = 0.0
 
+var invuln: float = 3.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#$CameraPivot/SpringArm3D.add_excluded_object(self)
