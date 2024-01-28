@@ -79,7 +79,7 @@ func _unhandled_input(event):
 		#visionTarget.rotation.x = clamp(visionTarget.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
 
 #func _process(delta):
-#	pass
+#	self.take_damage(0.5)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -174,9 +174,12 @@ func upgrade():
 		
 		animal_spawn_location.add_child(animal)
 	
-func take_damage():
-	print("Ouch!")
+func take_damage(damage):
+	self.healthCurrent -= damage
 	takingDamageAudioPlayer.playAnimalNoises(self.UpgradesGained)
+	if self.healthCurrent <= 0:
+		get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")
+	
 
 func getXP():
 	return self.totalXP

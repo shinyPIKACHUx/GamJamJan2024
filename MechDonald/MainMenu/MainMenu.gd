@@ -11,6 +11,7 @@ extends Control
 @onready var start_level = preload("res://Levels/Level 1.tscn") as PackedScene
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	handle_connecting_signals()
 	print("Help")
 
