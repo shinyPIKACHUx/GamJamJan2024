@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x5k8v7cgsop7"]
+
+[ext_resource type="Script" path="res://Audio/Scripts/TakingDamageAudio.gd" id="1_si3dd"]
+
+[node name="TakingDamageAudioPlayer" type="Node3D"]
+script = ExtResource("1_si3dd")
