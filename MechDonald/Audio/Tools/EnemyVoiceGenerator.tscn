@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwgfwtxdk6rux"]
+
+[ext_resource type="Script" path="res://Audio/Tools/EnemyVoiceGenerator.gd" id="1_oi6ud"]
+
+[node name="EnemyVoiceGenerator" type="Node3D"]
+script = ExtResource("1_oi6ud")
+frequency = 0.5
+chanceToPlay = 0.5

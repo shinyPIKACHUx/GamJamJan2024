@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var possibleNoises: Array[AudioStream] # sets possible noises enemies can make
+@export var possibleVoices: Array[AudioStream] # sets possible voices & noises enemies can make
 @export var frequency: float # number of times per second to attempt to play audio if not playing audio
 @export var chanceToPlay: float # 0-1. Probability to play audio when attempting to play audio
 
@@ -15,15 +15,15 @@ var audioNodeOnEnemy: Node
 
 func _ready():
 	
-	self.maxLength = self.possibleNoises.size()
+	self.maxLength = self.possibleVoices.size()
 	if (maxLength == 0):
-		printerr("EnemyNoiseGenerator requires at least 1 sound to be able to play. None given.")
+		printerr("EnemyVoiceGenerator requires at least 1 sound to be able to play. None given.")
 	self.reset()
 
 func reset():
 	self.playing = false
 	self.playIndex = randi_range(0, maxLength - 1)
-	self.audioDuration = self.possibleNoises[self.playIndex].get_length()
+	self.audioDuration = self.possibleVoices[self.playIndex].get_length()
 	self.secondsBetweenPlayChecks = 1 / self.frequency
 	self.audioTimer = 0
 	self.frequencyTimer = 0
@@ -48,13 +48,12 @@ func attemptToPlay():
 		if (enemy == null):
 			print("no enemy found. not trying to play anything.")
 			return
-		var audioToPlay = self.possibleNoises[self.playIndex]
+		var audioToPlay = self.possibleVoices[self.playIndex]
 		self.audioNodeOnEnemy = AudioStreamPlayer3D.new()
-		self.audioNodeOnEnemy.set_name("NoiseAudioNode")
+		self.audioNodeOnEnemy.set_name("VoiceAudioNode")
 		self.audioNodeOnEnemy.stream = audioToPlay
-		self.audioNodeOnEnemy.bus = "Noise"
+		self.audioNodeOnEnemy.bus = "Voices"
 		enemy.add_child(self.audioNodeOnEnemy)
-		#self.audioNodeOnEnemy = enemy.find_child("NoiseAudioNode")
 		self.audioNodeOnEnemy.play()
 		print("playing")
 		self.playing = true
