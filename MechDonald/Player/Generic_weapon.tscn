@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcimexqpp6aec"]
+
+[ext_resource type="Script" path="res://Player/Generic_weapon.gd" id="1_wa2nm"]
+[ext_resource type="PackedScene" uid="uid://dc4fegnqoleu" path="res://Player/chicken_inherited.tscn" id="2_2kwow"]
+
+[node name="GenericWeapon" type="Node3D"]
+script = ExtResource("1_wa2nm")
+
+[node name="Chicken" parent="." instance=ExtResource("2_2kwow")]

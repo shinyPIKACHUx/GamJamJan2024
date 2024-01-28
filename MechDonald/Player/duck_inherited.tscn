@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2punagghkl32"]
+
+[ext_resource type="PackedScene" uid="uid://b2ljjp8oghj3s" path="res://Assets/Models/Animals/Duck.glb" id="1_tkcmd"]
+
+[node name="Duck" instance=ExtResource("1_tkcmd")]
+
+[node name="ArmSocket" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.2)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.2)
+target_position = Vector3(0, 0, -5)
+
+[node name="LegSocket" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
