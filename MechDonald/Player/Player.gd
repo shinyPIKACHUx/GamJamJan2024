@@ -62,8 +62,13 @@ var totalXP: float = 0.0
 
 var invuln: float = 3.0
 
+var time_start = 0
+var time_now = 0
+
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	time_start = Time.get_ticks_msec()
 	#$CameraPivot/SpringArm3D.add_excluded_object(self)
 
 func _unhandled_input(event):
@@ -162,6 +167,9 @@ func _physics_process(delta):
 
 func addXP(xp: float):
 	self.totalXP += xp
+	if self.totalXP >= 200:
+		self.totalXP -= 200
+		upgrade()
 	
 func upgrade():
 	var animal_scene = upgrade_array.pick_random()

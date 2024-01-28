@@ -3,13 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="1_5hm5r"]
 [ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_74pn3"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_7cmgf"]
-[ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="3_73awx"]
+[ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_mdqin"]
+[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_n4hig"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
+[ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="4_6ncmt"]
+[ext_resource type="PackedScene" uid="uid://c1l8lqisxq4xi" path="res://XPGem/XPGemTestScene.tscn" id="5_6ffia"]
+[ext_resource type="AudioStream" uid="uid://dq6br5jqwug56" path="res://Assets/Sounds/Effects/laser-gun-shot-sound-future-sci-fi_pixabay.mp3" id="6_htxbo"]
 [ext_resource type="PackedScene" uid="uid://b036cwg0jhwty" path="res://Assets/Models/Animals/cow.tscn" id="4_av6g8"]
 [ext_resource type="PackedScene" uid="uid://bef8qo44qhj7c" path="res://Assets/Models/Animals/duck.tscn" id="5_tisog"]
 [ext_resource type="PackedScene" uid="uid://j1p235k4824i" path="res://Assets/Models/Animals/pig.tscn" id="6_6yepw"]
 [ext_resource type="PackedScene" uid="uid://dok5yjkorcqr2" path="res://XPGem/XPGem.tscn" id="6_uxpe4"]
-[ext_resource type="PackedScene" uid="uid://b2dyarvbbyqd6" path="res://Assets/Models/Animals/sheep.tscn" id="7_ayr2h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a77pk"]
 size = Vector3(40, 1, 40)
@@ -29,15 +32,23 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 
 [sub_resource type="Environment" id="Environment_r7v3o"]
 
+[sub_resource type="Curve3D" id="Curve3D_g1suw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20.2095, -0.210938, -20.7331, 0, 0, 0, 0, 0, 0, -20.4189, 0.222046, 20.5237, 0, 0, 0, 0, 0, 0, 20.0001, 0.329224, 20.5237, 0, 0, 0, 0, 0, 0, 20.2095, -0.266357, -20.5237, 0, 0, 0, 0, 0, 0, -20.4189, -0.229858, -20.7331),
+"tilts": PackedFloat32Array(0.0138082, 0, -2.82535, 0, 0)
+}
+point_count = 5
+
 [node name="Level Test" type="Node3D"]
 script = ExtResource("1_74pn3")
+mob_scenes = Array[PackedScene]([ExtResource("3_n4hig"), ExtResource("2_mdqin")])
+boss_scene = ExtResource("4_6ncmt")
 
-[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("upgrade_slots") instance=ExtResource("1_5hm5r")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
 mouse_sensitivity = 0.05
-upgrade_array = Array[PackedScene]([ExtResource("3_73awx"), ExtResource("4_av6g8"), ExtResource("5_tisog"), ExtResource("6_6yepw"), ExtResource("7_ayr2h")])
-upgrade_slots = [null, null, null, null, null]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -67,6 +78,29 @@ environment = SubResource("Environment_r7v3o")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 3, 0)
 
+[node name="XpGemTestScene" parent="." instance=ExtResource("5_6ffia")]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BossSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+curve = SubResource("Curve3D_g1suw")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.999891, 0.0138608, 0.00507578, 0.013807, 0.999849, -0.0104941, -0.00522048, -0.0104229, -0.999932, -20.2095, -0.210938, -20.7331)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0725174, 0, -0.00969028)
+stream = ExtResource("6_htxbo")
+volume_db = -32.0
+autoplay = true
+
 [node name="XPGem" parent="." instance=ExtResource("6_uxpe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10)
 xp = 100.0
@@ -75,3 +109,6 @@ slowlyApproachTargetThreshold = 100.0
 finalAttractToTargetThreshold = 3.0
 targetNodePath = NodePath("../CharacterBody3D")
 slowlyApproachRate = 0.25
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="BossSpawnTimer" to="." method="_on_boss_spawn_timer_timeout"]

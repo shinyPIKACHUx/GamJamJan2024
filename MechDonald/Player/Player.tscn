@@ -2,17 +2,20 @@
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
-[ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="2_tluj1"]
+[ext_resource type="PackedScene" uid="uid://dc4fegnqoleu" path="res://Player/Animal Components/chicken_inherited.tscn" id="2_xvb7n"]
+[ext_resource type="PackedScene" uid="uid://cfbkkjyytqmy6" path="res://Player/Animal Components/cow_inherited.tscn" id="3_djusq"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
+[ext_resource type="PackedScene" uid="uid://c2punagghkl32" path="res://Player/Animal Components/duck_inherited.tscn" id="4_40fjt"]
 [ext_resource type="PackedScene" uid="uid://b2rr8u6hpnbev" path="res://UI/ui_control.tscn" id="4_q6qyf"]
-[ext_resource type="Script" path="res://Player/Socket.gd" id="5_bk063"]
-[ext_resource type="Script" path="res://Player/SocketManager.gd" id="5_nnwut"]
+[ext_resource type="PackedScene" uid="uid://hpghn0wg2sju" path="res://Player/Animal Components/pig_inherited.tscn" id="5_g13tu"]
 [ext_resource type="Script" path="res://Player/Pause.gd" id="5_p1mlb"]
+[ext_resource type="PackedScene" uid="uid://sn4wl80efisr" path="res://Player/Animal Components/sheep_inherited.tscn" id="6_u8431"]
 [ext_resource type="PackedScene" uid="uid://x5k8v7cgsop7" path="res://Audio/Prefabs/TakingDamageAudioPlayer.tscn" id="9_fkroa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1publ"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nx6vm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_28sca"]
+size = Vector3(1.4707, 2.08963, 1.29156)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qrtr"]
 
@@ -31,20 +34,21 @@ albedo_color = Color(0.678431, 0.0980392, 0.533333, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849094, 0)
 script = ExtResource("1_41el3")
 speed = 10.0
-upgrade_array = Array[PackedScene]([ExtResource("2_tluj1")])
-upgrade_slots = [null, null, null, null, null]
+upgrade_array = Array[PackedScene]([ExtResource("2_xvb7n"), ExtResource("3_djusq"), ExtResource("4_40fjt"), ExtResource("5_g13tu"), ExtResource("6_u8431")])
+upgrade_slots = [NodePath("AnimalSpawnLoc1"), NodePath("AnimalSpawnLoc2"), NodePath("AnimalSpawnLoc3"), NodePath("AnimalSpawnLoc4"), NodePath("AnimalSpawnLoc5")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.3, 0, 1, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.3, 0, 0.107025, 0)
 mesh = SubResource("BoxMesh_1publ")
 surface_material_override/0 = ExtResource("2_6bwaj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_nx6vm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488281, -0.195969, 0.0027771)
+shape = SubResource("BoxShape3D_28sca")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 2.84862, 3.98478)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 1.95565, 3.98478)
+current = true
 script = ExtResource("3_ht4nx")
 
 [node name="UI_Container" type="CanvasLayer" parent="Camera3D"]
@@ -122,7 +126,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_stl8m")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60703, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0)
@@ -141,30 +145,28 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_biso7")
 surface_material_override/0 = SubResource("StandardMaterial3D_3aba2")
 
-[node name="Sockets" type="Node3D" parent="." node_paths=PackedStringArray("sockets")]
-script = ExtResource("5_nnwut")
-sockets = [null, NodePath("ArmLeft"), NodePath("LegRight"), NodePath("LegLeft"), NodePath("Head")]
-
-[node name="ArmLeft" type="Node3D" parent="Sockets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.2, -0.2)
-script = ExtResource("5_bk063")
-
-[node name="LegRight" type="Node3D" parent="Sockets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 0)
-script = ExtResource("5_bk063")
-
-[node name="LegLeft" type="Node3D" parent="Sockets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, -0.2)
-script = ExtResource("5_bk063")
-
-[node name="Head" type="Node3D" parent="Sockets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-script = ExtResource("5_bk063")
-
-[node name="RayCast3D2" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.361555, -1.1)
 target_position = Vector3(0, 0, -1)
 
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.361555, -1.1)
+target_position = Vector3(0, 0, -1)
+
+[node name="AnimalSpawnLoc1" type="Node3D" parent="."]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -0.7, -1, -0.15)
+
+[node name="AnimalSpawnLoc2" type="Node3D" parent="."]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0.7, -1, -0.15)
+
+[node name="AnimalSpawnLoc3" type="Node3D" parent="."]
+transform = Transform3D(-5.68248e-08, -1.3, 0, 1.3, -5.68248e-08, 0, 0, 0, 1.3, -1.45, 0.357025, -0.9)
+
+[node name="AnimalSpawnLoc4" type="Node3D" parent="."]
+transform = Transform3D(-5.68248e-08, 1.3, 0, -1.3, -5.68248e-08, 0, 0, 0, 1.3, 1.45, 0.357025, -0.9)
+
+[node name="AnimalSpawnLoc5" type="Node3D" parent="."]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0.357025, -0.1)
 [node name="TakingDamageAudioPlayer" parent="." instance=ExtResource("9_fkroa")]
 
 [connection signal="pressed" from="Camera3D/UI_Container/Pause/MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Resume" to="Camera3D/UI_Container/Pause" method="_on_resume_pressed"]

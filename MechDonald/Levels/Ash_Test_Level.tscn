@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://2sye00d40ots"]
+[gd_scene load_steps=13 format=3 uid="uid://2sye00d40ots"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_mnjxw"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="2_wam0s"]
+[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_ba4kj"]
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="4_fxfgv"]
 [ext_resource type="Script" path="res://Player/Pause.gd" id="5_yihbm"]
 
@@ -26,7 +27,8 @@ size = Vector3(99.5684, 1, 99.2606)
 
 [node name="AshTestLevel" type="Node3D"]
 script = ExtResource("1_srfco")
-mob_scene = ExtResource("2_mnjxw")
+mob_scenes = Array[PackedScene]([ExtResource("2_mnjxw"), ExtResource("3_ba4kj")])
+boss_scene = ExtResource("2_wam0s")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -83,12 +85,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0536194, 0, 0.400604)
 shape = SubResource("BoxShape3D_scgv5")
 
-[node name="Player" parent="." node_paths=PackedStringArray("upgrade_slots") instance=ExtResource("4_fxfgv")]
-upgrade_slots = [null, null, null, null, null]
+[node name="Player" parent="." instance=ExtResource("4_fxfgv")]
 
-[node name="BossEnemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("2_wam0s")]
+[node name="BossEnemy" parent="." instance=ExtResource("2_wam0s")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20.1144)
-playerRef = NodePath("../Player")
 
 [node name="Pause" type="Control" parent="."]
 layout_mode = 3
