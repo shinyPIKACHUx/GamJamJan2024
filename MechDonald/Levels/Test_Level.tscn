@@ -28,7 +28,6 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 script = ExtResource("1_74pn3")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
-speed = 10.0
 mouse_sensitivity = 0.05
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

@@ -10,7 +10,7 @@ radius = 1.99925
 radius = 0.500974
 
 [node name="BossEnemy" type="CharacterBody3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 script = ExtResource("1_nooug")
 speed = 5
 chargeSpeed = 15
