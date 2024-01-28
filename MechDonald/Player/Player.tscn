@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=12 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
+[ext_resource type="PackedScene" uid="uid://bcimexqpp6aec" path="res://Player/Generic_weapon.tscn" id="3_h02gc"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
+[ext_resource type="Script" path="res://Player/AnimalSocket.gd" id="5_bk063"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
 
@@ -26,6 +28,8 @@ speed = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_i2xu1")
 surface_material_override/0 = ExtResource("2_6bwaj")
+
+[node name="GenericWeapon" parent="MeshInstance3D" instance=ExtResource("3_h02gc")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.22553, -0.6)
@@ -69,10 +73,20 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_biso7")
 surface_material_override/0 = SubResource("StandardMaterial3D_3aba2")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.25453, -1.1)
-target_position = Vector3(0, 0, -1)
+[node name="Sockets" type="Node3D" parent="."]
 
-[node name="RayCast3D2" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
-target_position = Vector3(0, 0, -1)
+[node name="ArmRight" type="Node3D" parent="Sockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, -0.2)
+script = ExtResource("5_bk063")
+
+[node name="ArmLeft" type="Node3D" parent="Sockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.2, -0.2)
+
+[node name="LegRight" type="Node3D" parent="Sockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 0)
+
+[node name="LegLeft" type="Node3D" parent="Sockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, -0.2)
+
+[node name="Head" type="Node3D" parent="Sockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

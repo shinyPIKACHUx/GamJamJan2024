@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc4fegnqoleu"]
+
+[ext_resource type="PackedScene" uid="uid://6h2ie4yxm7og" path="res://Assets/Models/Animals/Chicken.glb" id="1_pcqxy"]
+[ext_resource type="Script" path="res://Player/AnimalPart.gd" id="2_5c7kp"]
+
+[node name="Chicken" instance=ExtResource("1_pcqxy")]
+script = ExtResource("2_5c7kp")
+
+[node name="ArmSocket" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.2)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.2)
+target_position = Vector3(0, 0, -5)
+
+[node name="LegSocket" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
