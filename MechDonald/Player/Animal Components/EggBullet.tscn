@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnkynhcncdw0j"]
+
+[ext_resource type="Script" path="res://Player/generic_bullet.gd" id="1_kr1jr"]
+[ext_resource type="ArrayMesh" uid="uid://cevpyess2rpvd" path="res://Assets/Models/Animals/Egg_mesh.tres" id="2_rjq5x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vv2r"]
+albedo_color = Color(0.388235, 0.439216, 0.141176, 1)
+emission_enabled = true
+emission = Color(0.52549, 0.690196, 0.25098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x44pr"]
+points = PackedVector3Array(0.825164, 0.648839, -0.146511, -0.899242, -0.175935, -0.0723553, -0.898812, -0.175702, 0.0777041, -0.222636, 1.4828, 0.115735, 0.265468, -0.135752, 0.862811, 0.0787146, -0.399612, -0.822647, 0.344367, -0.860317, 0.00260389, -0.254845, 0.793537, -0.73669, -0.0334994, 0.871975, 0.747971, -0.44212, -0.50449, 0.634548, 0.868119, -0.25043, -0.109872, -0.738658, 0.795597, 0.262361, 0.447705, 0.756735, -0.663074, 0.630897, 0.755508, 0.482023, -0.519711, -0.584705, -0.483479, 0.230272, 1.48386, -0.110453, -0.662583, 0.460959, -0.589837, -0.516826, 0.31295, 0.746411, 0.750952, -0.284628, 0.450787, 0.636441, -0.207661, -0.630033, -0.411187, -0.819231, 0.0779762, 0.191146, -0.699601, 0.565158, -0.440429, 1.20176, -0.33044, -0.184124, -0.0626712, -0.899593, 0.300528, 1.38873, 0.22506, 0.0792046, -0.819656, -0.412543, 0.191634, 0.23803, -0.899969, -0.815097, 0.647833, -0.183319, 0.0784094, 1.13472, -0.595117, -0.438561, 1.01343, 0.518783, -0.109036, -0.100916, 0.906035, 0.375301, 0.38697, 0.819967)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r33cx"]
+albedo_color = Color(0.526015, 0.690687, 0.251724, 1)
+emission_enabled = true
+emission = Color(0.526015, 0.690687, 0.251724, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56gb3"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_h6l1h"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="EggBullet" type="Area3D"]
+script = ExtResource("1_kr1jr")
+targetGroup = "Enemy"
+SPEED = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_rjq5x")
+surface_material_override/0 = SubResource("StandardMaterial3D_7vv2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_x44pr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+material_override = SubResource("StandardMaterial3D_r33cx")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_56gb3")
+draw_pass_1 = SubResource("BoxMesh_h6l1h")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

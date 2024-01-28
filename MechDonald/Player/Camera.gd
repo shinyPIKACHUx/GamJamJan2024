@@ -3,7 +3,6 @@ extends Camera3D
 @onready var cameraPivotNode : Node3D = $"../CameraPivot"
 @onready var cameraVisionTargetNode : Node3D = $"../CameraPivot/CameraVisonTarget"
 @onready var cameraMoveTargetNode : Node3D = $"../CameraPivot/SpringArm3D/CameraMoveTarget"
-@onready var label : Label = $Label
 
 var cameraMoveTarget : Vector3
 
@@ -33,7 +32,6 @@ func _process(delta):
 	global_position = gp_previous.lerp(gp_current, f)
 	
 	look_at(cameraVisionTargetNode.global_position)
-	label.set_text("camera pivot rotation = %s" % cameraPivotNode.rotation)
 
 func _physics_process(_delta):
 	update = true
