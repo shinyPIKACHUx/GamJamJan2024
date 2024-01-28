@@ -53,10 +53,6 @@ shape = SubResource("CapsuleShape3D_nx6vm")
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 2.84862, 3.98478)
 script = ExtResource("3_ht4nx")
 
-[node name="Label" type="Label" parent="Camera3D"]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="UI_Container" type="CanvasLayer" parent="Camera3D"]
 layer = 128
 

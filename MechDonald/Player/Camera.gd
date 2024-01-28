@@ -33,7 +33,7 @@ func _process(delta):
 	global_position = gp_previous.lerp(gp_current, f)
 	
 	look_at(cameraVisionTargetNode.global_position)
-	label.set_text("camera pivot rotation = %s" % cameraPivotNode.rotation)
+
 
 func _physics_process(_delta):
 	update = true
