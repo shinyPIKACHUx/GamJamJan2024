@@ -12,6 +12,7 @@ func _ready():
 	get_bus_name_by_index()
 	set_name_label_text()
 	set_slider_value()
+	set_audio_num_label_text()
 	h_slider.value_changed.connect(on_value_changed)
 	
 func set_name_label_text() -> void:

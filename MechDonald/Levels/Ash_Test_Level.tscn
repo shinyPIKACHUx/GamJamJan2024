@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://2sye00d40ots"]
+[gd_scene load_steps=11 format=3 uid="uid://2sye00d40ots"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="2_wam0s"]
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="4_fxfgv"]
+[ext_resource type="PackedScene" uid="uid://dwgfwtxdk6rux" path="res://Audio/Scenes/EnemyVoiceGenerator.tscn" id="5_4npw4"]
 
 [sub_resource type="Curve3D" id="Curve3D_m4uej"]
 _data = {
@@ -85,5 +86,9 @@ shape = SubResource("BoxShape3D_scgv5")
 [node name="BossEnemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("2_wam0s")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20.1144)
 playerRef = NodePath("../Player")
+
+[node name="EnemyVoiceGenerator" parent="." instance=ExtResource("5_4npw4")]
+audioType = 0
+busToUse = 0
 
 [connection signal="timeout" from="Timer" to="." method="_on_mob_timer_timeout"]

@@ -11,6 +11,7 @@ resource_name = "Amplify"
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_ooctl"]
 resource_name = "Amplify"
+volume_db = -16.0
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_nlb3n"]
 resource_name = "Amplify"

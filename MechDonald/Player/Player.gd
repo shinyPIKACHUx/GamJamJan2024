@@ -61,8 +61,8 @@ func _unhandled_input(event):
 		#visionTarget.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		#visionTarget.rotation.x = clamp(visionTarget.rotation.x, deg_to_rad(MIN_CAMERA_ANGLE), deg_to_rad(MAX_CAMERA_ANGLE))
 
-func _process(delta):
-	print_debug("currentXP: " + str(self.totalXP).pad_decimals(2))
+#func _process(delta):
+#	pass
 
 func _physics_process(delta):
 	# Add the gravity.

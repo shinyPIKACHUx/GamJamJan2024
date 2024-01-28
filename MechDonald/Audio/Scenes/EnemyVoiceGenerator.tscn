@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwgfwtxdk6rux"]
+
+[ext_resource type="Script" path="res://Audio/Tools/IntermittentAudioGenerator.gd" id="1_gxbfo"]
+[ext_resource type="AudioStream" uid="uid://xru3x6qe82oa" path="res://Assets/Sounds/Voices/alien-voice_pixabay-1.mp3" id="2_r8nay"]
+[ext_resource type="AudioStream" uid="uid://bphv8ckgm7258" path="res://Assets/Sounds/Voices/alien-voice_pixabay-2.mp3" id="3_1brgd"]
+[ext_resource type="AudioStream" uid="uid://djwv43axm8y2t" path="res://Assets/Sounds/Voices/alien-voice_pixabay-3.mp3" id="4_tuqdf"]
+[ext_resource type="AudioStream" uid="uid://chpfe2ee4wykd" path="res://Assets/Sounds/Voices/alien-voice_pixabay-4.mp3" id="5_11ubb"]
+
+[node name="EnemyVoiceGenerator" type="Node3D"]
+script = ExtResource("1_gxbfo")
+audioType = 2
+busToUse = 4
+possibleVoices = Array[AudioStream]([ExtResource("2_r8nay"), ExtResource("3_1brgd"), ExtResource("4_tuqdf"), ExtResource("5_11ubb")])
+frequency = 0.5
+chanceToPlay = 0.5
+generatedNodeName = "EnemyVoiceGeneratorNode"
+groupToSearch = "Enemy"
