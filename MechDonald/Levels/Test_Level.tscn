@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://djnrb7ft3e7v3"]
+[gd_scene load_steps=16 format=3 uid="uid://djnrb7ft3e7v3"]
 
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="1_5hm5r"]
 [ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_74pn3"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_7cmgf"]
+[ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_mdqin"]
+[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_n4hig"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
+[ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="4_6ncmt"]
 [ext_resource type="PackedScene" uid="uid://c1l8lqisxq4xi" path="res://XPGem/XPGemTestScene.tscn" id="5_6ffia"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a77pk"]
@@ -24,13 +27,23 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 
 [sub_resource type="Environment" id="Environment_r7v3o"]
 
+[sub_resource type="Curve3D" id="Curve3D_g1suw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -17.5259, -0.210938, -11.4197, 0, 0, 0, 0, 0, 0, -17.6582, 0.222046, 14.1095, 0, 0, 0, 0, 0, 0, 15.8075, 0.329224, 13.9772, 0, 0, 0, 0, 0, 0, 15.543, -0.266357, -10.8906, 0, 0, 0, 0, 0, 0, -17.7904, -0.229858, -11.2874),
+"tilts": PackedFloat32Array(0.0138082, 0, -2.82535, 0, 0)
+}
+point_count = 5
+
 [node name="Level Test" type="Node3D"]
 script = ExtResource("1_74pn3")
+mob_scenes = Array[PackedScene]([ExtResource("2_mdqin"), ExtResource("3_n4hig")])
+boss_scene = ExtResource("4_6ncmt")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
 mouse_sensitivity = 0.05
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -61,3 +74,21 @@ environment = SubResource("Environment_r7v3o")
 transform = Transform3D(0.866025, 0, 0.5, -0.433013, 0.5, 0.75, -0.25, -0.866025, 0.433013, 0, 3, 0)
 
 [node name="XpGemTestScene" parent="." instance=ExtResource("5_6ffia")]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BossSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+curve = SubResource("Curve3D_g1suw")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.99989, 0.0138954, 0.00518046, 0.0138058, 0.99976, -0.0169577, -0.00541485, -0.0168843, -0.999843, -17.5259, -0.210938, -11.4197)
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="BossSpawnTimer" to="." method="_on_boss_spawn_timer_timeout"]

@@ -12,7 +12,6 @@ radius = 0.500974
 
 [node name="ShootingEnemy" type="CharacterBody3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-axis_lock_linear_y = true
 script = ExtResource("1_ajvoe")
 speed = 4
 shotSpeed = 8
