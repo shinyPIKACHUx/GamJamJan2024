@@ -1,11 +1,10 @@
 extends Area3D
 
-const SPEED = 40.0
-
 @onready var mesh = $MeshInstance3D
 @onready var particles = $GPUParticles3D
 
 @export var targetGroup : String
+@export var SPEED = 20.0
 
 func _physics_process(delta):
 	global_position += transform.basis * Vector3(0, 0, -SPEED) * delta

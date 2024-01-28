@@ -1,9 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcimexqpp6aec"]
+[gd_scene load_steps=4 format=3 uid="uid://bcimexqpp6aec"]
 
-[ext_resource type="Script" path="res://Player/Generic_weapon.gd" id="1_wa2nm"]
-[ext_resource type="PackedScene" uid="uid://dc4fegnqoleu" path="res://Player/chicken_inherited.tscn" id="2_2kwow"]
+[ext_resource type="Script" path="res://Player/Animal Components/AnimalPart.gd" id="1_ajr7e"]
+[ext_resource type="PackedScene" uid="uid://cda05fgi1b77t" path="res://Player/generic_bullet.tscn" id="2_7mvmn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rofnj"]
 
 [node name="GenericWeapon" type="Node3D"]
-script = ExtResource("1_wa2nm")
+script = ExtResource("1_ajr7e")
+bullet = ExtResource("2_7mvmn")
 
-[node name="Chicken" parent="." instance=ExtResource("2_2kwow")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_rofnj")
+
+[node name="ArmSocket" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+target_position = Vector3(0, 0, -5)
+
+[node name="LegSocket" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

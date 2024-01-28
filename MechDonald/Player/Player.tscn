@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=13 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 [ext_resource type="PackedScene" uid="uid://bcimexqpp6aec" path="res://Player/Generic_weapon.tscn" id="3_h02gc"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
-[ext_resource type="Script" path="res://Player/AnimalSocket.gd" id="5_bk063"]
+[ext_resource type="Script" path="res://Player/Socket.gd" id="5_bk063"]
+[ext_resource type="Script" path="res://Player/SocketManager.gd" id="5_nnwut"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
 
@@ -73,7 +74,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_biso7")
 surface_material_override/0 = SubResource("StandardMaterial3D_3aba2")
 
-[node name="Sockets" type="Node3D" parent="."]
+[node name="Sockets" type="Node3D" parent="." node_paths=PackedStringArray("sockets")]
+script = ExtResource("5_nnwut")
+sockets = [NodePath("ArmRight"), NodePath("ArmLeft"), NodePath("LegRight"), NodePath("LegLeft"), NodePath("Head")]
 
 [node name="ArmRight" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, -0.2)
@@ -81,12 +84,16 @@ script = ExtResource("5_bk063")
 
 [node name="ArmLeft" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.2, -0.2)
+script = ExtResource("5_bk063")
 
 [node name="LegRight" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 0)
+script = ExtResource("5_bk063")
 
 [node name="LegLeft" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, -0.2)
+script = ExtResource("5_bk063")
 
 [node name="Head" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("5_bk063")
