@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cda05fgi1b77t"]
+
+[ext_resource type="Script" path="res://Player/generic_bullet.gd" id="1_6th35"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgmgc"]
+size = Vector3(0.05, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23xun"]
+albedo_color = Color(0.388235, 0.439216, 0.141176, 1)
+emission_enabled = true
+emission = Color(0.52549, 0.690196, 0.25098, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03vor"]
+size = Vector3(0.05, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knq1s"]
+albedo_color = Color(0.526015, 0.690687, 0.251724, 1)
+emission_enabled = true
+emission = Color(0.526015, 0.690687, 0.251724, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3oo1"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xj0ul"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="GenericBullet" type="Area3D"]
+script = ExtResource("1_6th35")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qgmgc")
+surface_material_override/0 = SubResource("StandardMaterial3D_23xun")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_03vor")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+material_override = SubResource("StandardMaterial3D_knq1s")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_s3oo1")
+draw_pass_1 = SubResource("BoxMesh_xj0ul")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
