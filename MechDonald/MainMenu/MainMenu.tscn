@@ -94,6 +94,10 @@ theme_override_fonts/font = SubResource("SystemFont_o5u32")
 theme_override_font_sizes/font_size = 24
 text = "Exit Game"
 
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Made by Ashley Ramsey, Alex Wissing, Schuyler Rhodes, and Alan Godfrey"
+
 [node name="Options_Menu" parent="." instance=ExtResource("2_vy2ej")]
 visible = false
 layout_mode = 1
