@@ -8,7 +8,7 @@ extends Control
 @onready var options_buton = $MarginContainer/HBoxContainer/VBoxContainer/Options_Buton as Button
 @onready var options_menu = $Options_Menu as OptionsMenu
 @onready var margin_container = $MarginContainer as MarginContainer
-@onready var start_level = preload("res://Levels/Test_Level.tscn") as PackedScene
+@onready var start_level = preload("res://Levels/Level 1.tscn") as PackedScene
 
 func _ready():
 	handle_connecting_signals()

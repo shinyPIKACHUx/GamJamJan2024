@@ -11,7 +11,6 @@ func _ready():
 	playerRef = get_tree().get_first_node_in_group("Player")
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Rotate toward player

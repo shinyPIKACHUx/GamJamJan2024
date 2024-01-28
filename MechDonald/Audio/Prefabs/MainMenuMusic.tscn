@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crvtjydolm0hl"]
+
+[ext_resource type="AudioStream" uid="uid://sridihphlmab" path="res://Assets/Sounds/Songs/happy-funny-kids_song_pixabay.mp3" id="1_h4cmm"]
+[ext_resource type="AudioStream" uid="uid://bdq2jwiwk5wka" path="res://Assets/Sounds/Ambience/ambience-farm_background_pixabay.mp3" id="2_v620m"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_h4cmm")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v620m")
+autoplay = true
+bus = &"Noise"

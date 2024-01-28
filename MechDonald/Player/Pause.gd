@@ -2,6 +2,8 @@ extends Control
 @onready var resume = $MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Resume as Button
 @onready var exit_to_menu = $"MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Exit to Menu" as Button
 
+
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)

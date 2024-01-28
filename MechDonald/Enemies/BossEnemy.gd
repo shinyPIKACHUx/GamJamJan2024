@@ -13,6 +13,7 @@ var chargeDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	playerRef = get_tree().get_first_node_in_group("Player")
 	currentBehavior = BEHAVIOR_STATE.MOVE_CLOSER
 	playerRef = get_tree().get_first_node_in_group("Player")
 
