@@ -10,9 +10,8 @@ radius = 1.99925
 [sub_resource type="SphereShape3D" id="SphereShape3D_hg66k"]
 radius = 0.500974
 
-[node name="ShootingEnemy" type="CharacterBody3D"]
+[node name="ShootingEnemy" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-axis_lock_linear_y = true
 script = ExtResource("1_ajvoe")
 speed = 4
 shotSpeed = 8

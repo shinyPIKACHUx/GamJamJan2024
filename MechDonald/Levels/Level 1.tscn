@@ -1,11 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg3t8oytdgvkg"]
+[gd_scene load_steps=24 format=3 uid="uid://cer6ahfw27kxi"]
 
+[ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_bst2l"]
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="1_t24na"]
 [ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="2_nwjmf"]
-[ext_resource type="PackedScene" uid="uid://b036cwg0jhwty" path="res://Assets/Models/Animals/cow.tscn" id="3_vye4m"]
-[ext_resource type="PackedScene" uid="uid://bef8qo44qhj7c" path="res://Assets/Models/Animals/duck.tscn" id="4_prmmc"]
-[ext_resource type="PackedScene" uid="uid://j1p235k4824i" path="res://Assets/Models/Animals/pig.tscn" id="5_5uusx"]
-[ext_resource type="PackedScene" uid="uid://b2dyarvbbyqd6" path="res://Assets/Models/Animals/sheep.tscn" id="6_lce4f"]
+[ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_pox30"]
+[ext_resource type="PackedScene" uid="uid://u7acjc1objkr" path="res://Enemies/BasicEnemy.tscn" id="3_8fxys"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/cow.tscn" id="3_vye4m"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/duck.tscn" id="4_prmmc"]
+[ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="4_vr2yn"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/pig.tscn" id="5_5uusx"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/sheep.tscn" id="6_lce4f"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="7_860aw"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="8_hikyc"]
 [ext_resource type="PackedScene" uid="uid://dok5yjkorcqr2" path="res://XPGem/XPGem.tscn" id="10_1jb2w"]
@@ -31,7 +35,17 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 
 [sub_resource type="Environment" id="Environment_pcyi3"]
 
+[sub_resource type="Curve3D" id="Curve3D_v58fo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -30.8844, 0.351929, -24.8441, 0, 0, 0, 0, 0, 0, -31.6951, -0.666626, 30.7611, 0, 0, 0, 0, 0, 0, 31.1171, -0.668579, 31.7634, 0, 0, 0, 0, 0, 0, 31.5626, 0.238037, -25.071, 0, 0, 0, 0, 0, 0, -30.9106, 0.338135, -25.0531),
+"tilts": PackedFloat32Array(0.0138082, 0, -2.82535, 0, 0)
+}
+point_count = 5
+
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_bst2l")
+mob_scenes = Array[PackedScene]([ExtResource("2_pox30"), ExtResource("3_8fxys")])
+boss_scene = ExtResource("4_vr2yn")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_t24na")]
 mouse_sensitivity = 0.05
@@ -118,3 +132,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
 [node name="EnemyVoiceGenerator" parent="." instance=ExtResource("11_hlble")]
 
 [node name="Music" parent="." instance=ExtResource("12_lfmtd")]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BossTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_v58fo")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.999801, 0.0135394, 0.0145751, 0.0138054, 0.999736, 0.0183126, -0.0143233, 0.0185102, -0.999727, -30.8844, 0.351929, -24.8441)
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="BossTimer" to="." method="_on_boss_spawn_timer_timeout"]

@@ -12,6 +12,7 @@ var chargeDirection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	playerRef = get_tree().get_first_node_in_group("Player")
 	currentBehavior = BEHAVIOR_STATE.MOVE_CLOSER
 	pass # Replace with function body.
 
@@ -31,10 +32,7 @@ func _physics_process(delta):
 			position = position.move_toward(position + chargeDirection, delta * chargeSpeed)
 
 # Called from the main scene
-func initialize(spawn_location, player):
-	# Set player reference
-	playerRef = player
-	
+func initialize(spawn_location):
 	# Set position data
 	position = spawn_location
 
