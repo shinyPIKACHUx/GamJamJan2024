@@ -2,6 +2,7 @@ class_name ShootingEnemy extends CharacterBody3D
 
 #speed of the mob m/s
 @export var speed = 2
+@export var hp = 10
 @export var shotSpeed = 5
 @export var bullet_scene: PackedScene
 @export var runAwayDist = 6
@@ -54,7 +55,14 @@ func shoot():
 		
 		get_tree().current_scene.add_child(bullet)
 		bullet.initialize(bullet_spawn_location.global_position, direction * shotSpeed)
-	
+
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		var xpgem = XPGemFactory.create(100, "../Target")
+		get_tree().add_child(xpgem)
+		queue_free()
+
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):
 		playerRef.take_damage()

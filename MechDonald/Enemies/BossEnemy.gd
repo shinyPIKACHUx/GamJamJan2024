@@ -3,6 +3,7 @@ class_name BossEnemy extends CharacterBody3D
 #speed of the mob m/s
 @export var speed = 2
 @export var chargeSpeed = 5
+@export var hp = 50
 
 var playerRef
 enum BEHAVIOR_STATE {MOVE_CLOSER, TELEGRAPH, CHARGE}
@@ -47,6 +48,13 @@ func charge():
 	currentBehavior = BEHAVIOR_STATE.CHARGE
 	chargeDirection = position.direction_to(playerRef.position)
 	$ChargeTimer.start(1.0)
+	
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		var xpgem = XPGemFactory.create(100, "../Target")
+		get_tree().add_child(xpgem)
+		queue_free()
 		
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):

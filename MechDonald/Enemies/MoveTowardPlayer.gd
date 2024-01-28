@@ -2,6 +2,7 @@ class_name MoveTowardPlayer extends CharacterBody3D
 
 #speed of the mob m/s
 @export var speed = 2
+@export var hp = 15
 
 var playerRef
 
@@ -24,6 +25,13 @@ func initialize(spawn_location):
 	# Set position data
 	position = spawn_location
 	
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		var xpgem = XPGemFactory.create(100, "../Target")
+		get_tree().add_child(xpgem)
+		queue_free()
+
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("Player"):
 		playerRef.take_damage()
