@@ -9,8 +9,6 @@ extends Area3D
 @export var slowlyApproachRate: float = 1.0
 @export var finalAttractDeltaLerpMultiplier: float = 0.4
 
-#@export var curve : Curve
-
 var targetNode: CharacterBody3D = null
 var lerpDeltaAccumulator: float = 0.0
 
