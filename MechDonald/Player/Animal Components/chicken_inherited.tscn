@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc4fegnqoleu"]
 
-[ext_resource type="PackedScene" uid="uid://6h2ie4yxm7og" path="res://Assets/Models/Animals/Chicken.glb" id="1_pcqxy"]
+[ext_resource type="PackedScene" uid="uid://bcllsq7h0t4rx" path="res://Assets/Models/Animals/AnimalModels/Chicken.glb" id="1_pcqxy"]
 [ext_resource type="Script" path="res://Player/Animal Components/AnimalPart.gd" id="2_5c7kp"]
 [ext_resource type="PackedScene" uid="uid://bnkynhcncdw0j" path="res://Player/Animal Components/EggBullet.tscn" id="3_dbnhu"]
 

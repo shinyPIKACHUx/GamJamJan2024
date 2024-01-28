@@ -8,8 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
 [ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="4_6ncmt"]
 [ext_resource type="PackedScene" uid="uid://c1l8lqisxq4xi" path="res://XPGem/XPGemTestScene.tscn" id="5_6ffia"]
+[ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="3_73awx"]
+[ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
+[ext_resource type="PackedScene" uid="uid://b036cwg0jhwty" path="res://Assets/Models/Animals/cow.tscn" id="4_av6g8"]
+[ext_resource type="PackedScene" uid="uid://bef8qo44qhj7c" path="res://Assets/Models/Animals/duck.tscn" id="5_tisog"]
+[ext_resource type="PackedScene" uid="uid://j1p235k4824i" path="res://Assets/Models/Animals/pig.tscn" id="6_6yepw"]
 [ext_resource type="AudioStream" uid="uid://dq6br5jqwug56" path="res://Assets/Sounds/Effects/laser-gun-shot-sound-future-sci-fi_pixabay.mp3" id="6_htxbo"]
 [ext_resource type="PackedScene" uid="uid://dok5yjkorcqr2" path="res://XPGem/XPGem.tscn" id="6_uxpe4"]
+[ext_resource type="PackedScene" uid="uid://b2dyarvbbyqd6" path="res://Assets/Models/Animals/sheep.tscn" id="7_ayr2h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a77pk"]
 size = Vector3(40, 1, 40)
@@ -41,8 +47,10 @@ script = ExtResource("1_74pn3")
 mob_scenes = Array[PackedScene]([ExtResource("2_mdqin"), ExtResource("3_n4hig")])
 boss_scene = ExtResource("4_6ncmt")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("upgrade_slots") instance=ExtResource("1_5hm5r")]
 mouse_sensitivity = 0.05
+upgrade_array = Array[PackedScene]([ExtResource("3_73awx"), ExtResource("4_av6g8"), ExtResource("5_tisog"), ExtResource("6_6yepw"), ExtResource("7_ayr2h")])
+upgrade_slots = [null, null, null, null, null]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
