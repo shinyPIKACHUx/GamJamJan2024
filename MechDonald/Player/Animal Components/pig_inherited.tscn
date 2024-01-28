@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://hpghn0wg2sju"]
 
-[ext_resource type="PackedScene" uid="uid://byj0lqe1konpg" path="res://Assets/Models/Animals/Pig.glb" id="1_ls642"]
+[ext_resource type="PackedScene" uid="uid://k17xy4uobusf" path="res://Assets/Models/Animals/AnimalModels/Pig.glb" id="1_ls642"]
 [ext_resource type="Script" path="res://Player/Animal Components/AnimalPart.gd" id="2_c47ag"]
 [ext_resource type="PackedScene" uid="uid://dnxnxalp6dbcw" path="res://Player/Animal Components/Fart_bullet.tscn" id="3_nb7ka"]
 

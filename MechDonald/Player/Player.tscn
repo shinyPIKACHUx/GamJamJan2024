@@ -1,13 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=17 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 [ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="2_tluj1"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
 [ext_resource type="PackedScene" uid="uid://b2rr8u6hpnbev" path="res://UI/ui_control.tscn" id="4_q6qyf"]
-[ext_resource type="Script" path="res://Player/Pause.gd" id="5_p1mlb"]
 [ext_resource type="Script" path="res://Player/Socket.gd" id="5_bk063"]
 [ext_resource type="Script" path="res://Player/SocketManager.gd" id="5_nnwut"]
+[ext_resource type="Script" path="res://Player/Pause.gd" id="5_p1mlb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1publ"]
 
@@ -30,8 +30,8 @@ albedo_color = Color(0.678431, 0.0980392, 0.533333, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849094, 0)
 script = ExtResource("1_41el3")
 speed = 10.0
-upgrade_array = [ExtResource("2_tluj1"), ExtResource("3_q5kvl"), ExtResource("4_n0860"), ExtResource("5_kdmsu"), ExtResource("6_irfy5")]
-upgrade_slots = [NodePath("AnimalSpawnLoc1"), NodePath("AnimalSpawnLoc2"), NodePath("AnimalSpawnLoc3"), NodePath("AnimalSpawnLoc4"), NodePath("AnimalSpawnLoc5")]
+upgrade_array = Array[PackedScene]([ExtResource("2_tluj1")])
+upgrade_slots = [null, null, null, null, null]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.3, 0, 1, 0)
@@ -142,11 +142,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3aba2")
 
 [node name="Sockets" type="Node3D" parent="." node_paths=PackedStringArray("sockets")]
 script = ExtResource("5_nnwut")
-sockets = [NodePath("ArmRight"), NodePath("ArmLeft"), NodePath("LegRight"), NodePath("LegLeft"), NodePath("Head")]
-
-[node name="RayCast3D2" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
-target_position = Vector3(0, 0, -1)
+sockets = [null, NodePath("ArmLeft"), NodePath("LegRight"), NodePath("LegLeft"), NodePath("Head")]
 
 [node name="ArmLeft" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.2, -0.2)
@@ -163,3 +159,7 @@ script = ExtResource("5_bk063")
 [node name="Head" type="Node3D" parent="Sockets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 script = ExtResource("5_bk063")
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
+target_position = Vector3(0, 0, -1)

@@ -1,11 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://djnrb7ft3e7v3"]
+[gd_scene load_steps=18 format=3 uid="uid://djnrb7ft3e7v3"]
 
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="1_5hm5r"]
 [ext_resource type="Script" path="res://Levels/Test_Level_manager.gd" id="1_74pn3"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_7cmgf"]
+[ext_resource type="PackedScene" uid="uid://phtww6q8377o" path="res://Assets/Models/Animals/chicken.tscn" id="3_73awx"]
 [ext_resource type="Texture2D" uid="uid://bykh7afx4p5ua" path="res://Assets/kenney_prototypetextures/PNG/Green/texture_12.png" id="3_vnfdx"]
+[ext_resource type="PackedScene" uid="uid://b036cwg0jhwty" path="res://Assets/Models/Animals/cow.tscn" id="4_av6g8"]
+[ext_resource type="PackedScene" uid="uid://bef8qo44qhj7c" path="res://Assets/Models/Animals/duck.tscn" id="5_tisog"]
+[ext_resource type="PackedScene" uid="uid://j1p235k4824i" path="res://Assets/Models/Animals/pig.tscn" id="6_6yepw"]
 [ext_resource type="AudioStream" uid="uid://dq6br5jqwug56" path="res://Assets/Sounds/Effects/laser-gun-shot-sound-future-sci-fi_pixabay.mp3" id="6_htxbo"]
 [ext_resource type="PackedScene" uid="uid://dok5yjkorcqr2" path="res://XPGem/XPGem.tscn" id="6_uxpe4"]
+[ext_resource type="PackedScene" uid="uid://b2dyarvbbyqd6" path="res://Assets/Models/Animals/sheep.tscn" id="7_ayr2h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a77pk"]
 size = Vector3(40, 1, 40)
@@ -28,8 +33,10 @@ points = PackedVector3Array(2, 2, 2, 2, 2, -2, -2, 2, 2, 2, -2, 2, 2, -2, -2, -2
 [node name="Level Test" type="Node3D"]
 script = ExtResource("1_74pn3")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_5hm5r")]
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("upgrade_slots") instance=ExtResource("1_5hm5r")]
 mouse_sensitivity = 0.05
+upgrade_array = Array[PackedScene]([ExtResource("3_73awx"), ExtResource("4_av6g8"), ExtResource("5_tisog"), ExtResource("6_6yepw"), ExtResource("7_ayr2h")])
+upgrade_slots = [null, null, null, null, null]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

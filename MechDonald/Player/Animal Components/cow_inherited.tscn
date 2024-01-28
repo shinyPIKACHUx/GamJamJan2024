@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfbkkjyytqmy6"]
 
-[ext_resource type="PackedScene" uid="uid://vq2cf7pil2mp" path="res://Assets/Models/Animals/Cow.glb" id="1_e2w8j"]
+[ext_resource type="PackedScene" uid="uid://dth5hkla7fp6f" path="res://Assets/Models/Animals/AnimalModels/Cow.glb" id="1_e2w8j"]
 [ext_resource type="Script" path="res://Player/Animal Components/AnimalPart.gd" id="2_uxeih"]
 [ext_resource type="PackedScene" uid="uid://dnxnxalp6dbcw" path="res://Player/Animal Components/Fart_bullet.tscn" id="3_fr3vn"]
 
