@@ -7,7 +7,8 @@
 radius = 1.30488
 height = 6.83212
 
-[node name="BasicEnemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="BasicEnemy" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 axis_lock_linear_y = true
 script = ExtResource("1_2d7ka")
 speed = 6

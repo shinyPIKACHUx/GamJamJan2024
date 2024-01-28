@@ -1,6 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://2sye00d40ots"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_srfco"]
+[ext_resource type="PackedScene" uid="uid://ygwruj05wuih" path="res://Enemies/ShootingEnemy.tscn" id="2_mnjxw"]
 [ext_resource type="Material" uid="uid://bvepha0qsftld" path="res://Materials/Ground_Test_Material.tres" id="2_u131b"]
 [ext_resource type="PackedScene" uid="uid://cylj0yvl14fbr" path="res://Enemies/BossEnemy.tscn" id="2_wam0s"]
 [ext_resource type="PackedScene" uid="uid://cktom2idg5lta" path="res://Player/Player.tscn" id="4_fxfgv"]
@@ -25,6 +26,7 @@ size = Vector3(99.5684, 1, 99.2606)
 
 [node name="AshTestLevel" type="Node3D"]
 script = ExtResource("1_srfco")
+mob_scene = ExtResource("2_mnjxw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -32,7 +34,7 @@ light_energy = 16.0
 omni_range = 4096.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 50.85
+wait_time = 2.0
 autostart = true
 
 [node name="SpawnPath" type="Path3D" parent="."]

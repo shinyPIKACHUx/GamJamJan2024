@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b036cwg0jhwty"]
+
+[ext_resource type="PackedScene" uid="uid://dth5hkla7fp6f" path="res://Assets/Models/Animals/AnimalModels/Cow.glb" id="1_3yjpx"]
+[ext_resource type="Script" path="res://Player/Upgrades/CowUpgrade.gd" id="2_naggg"]
+
+[node name="Cow" instance=ExtResource("1_3yjpx")]
+script = ExtResource("2_naggg")
