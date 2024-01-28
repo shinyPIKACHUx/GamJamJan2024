@@ -60,8 +60,13 @@ var totalXP: float = 0.0
 
 var invuln: float = 3.0
 
+var time_start = 0
+var time_now = 0
+
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	time_start = Time.get_ticks_msec()
 	#$CameraPivot/SpringArm3D.add_excluded_object(self)
 
 func _unhandled_input(event):
@@ -171,8 +176,12 @@ func upgrade():
 		
 		animal_spawn_location.add_child(animal)
 	
-func take_damage():
-	print("Ouch!")
+func take_damage(damage):
+	self.healthCurrent -= damage
+	if self.healthCurrent <= 0:
+		time_now = Time.get_ticks_msec()
+		print(time_now - time_start)
+		get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")
 
 func getXP():
 	return self.totalXP

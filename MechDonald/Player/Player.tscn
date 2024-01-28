@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cktom2idg5lta"]
+[gd_scene load_steps=19 format=3 uid="uid://cktom2idg5lta"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
@@ -6,12 +6,10 @@
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
 [ext_resource type="PackedScene" path="res://Assets/Models/Animals/cow.tscn" id="3_q5kvl"]
 [ext_resource type="PackedScene" path="res://Assets/Models/Animals/duck.tscn" id="4_n0860"]
-[ext_resource type="PackedScene" path="res://Assets/Models/Animals/pig.tscn" id="5_kdmsu"]
-[ext_resource type="PackedScene" path="res://Assets/Models/Animals/sheep.tscn" id="6_irfy5"]
 [ext_resource type="PackedScene" uid="uid://b2rr8u6hpnbev" path="res://UI/ui_control.tscn" id="4_q6qyf"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/pig.tscn" id="5_kdmsu"]
 [ext_resource type="Script" path="res://Player/Pause.gd" id="5_p1mlb"]
-[ext_resource type="Script" path="res://Player/Socket.gd" id="5_bk063"]
-[ext_resource type="Script" path="res://Player/SocketManager.gd" id="5_nnwut"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Animals/sheep.tscn" id="6_irfy5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1publ"]
 
