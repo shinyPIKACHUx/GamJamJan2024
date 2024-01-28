@@ -165,6 +165,9 @@ func _physics_process(delta):
 
 func addXP(xp: float):
 	self.totalXP += xp
+	if self.totalXP >= 200:
+		self.totalXP -= 200
+		upgrade()
 	
 func upgrade():
 	var animal_scene = upgrade_array.pick_random()

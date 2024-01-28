@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	if rayCast.is_colliding():
 		var object = rayCast.get_collider()
-		if object.is_in_group("Enemies"):
+		if object.is_in_group("Enemy"):
 			fire_bullets()
 
 func fire_bullets():

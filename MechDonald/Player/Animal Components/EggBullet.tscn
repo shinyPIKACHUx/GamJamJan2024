@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bnkynhcncdw0j"]
 
 [ext_resource type="Script" path="res://Player/generic_bullet.gd" id="1_kr1jr"]
-[ext_resource type="ArrayMesh" uid="uid://cfpr6jwiygfvs" path="res://Assets/Models/Animals/egg.tres" id="2_rjq5x"]
+[ext_resource type="ArrayMesh" uid="uid://d0baqeq6ccwc7" path="res://Assets/Models/Animals/egg.tres" id="2_rjq5x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vv2r"]
 albedo_color = Color(0.388235, 0.439216, 0.141176, 1)
