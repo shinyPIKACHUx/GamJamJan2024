@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://j1p235k4824i"]
+
+[ext_resource type="PackedScene" uid="uid://k17xy4uobusf" path="res://Assets/Models/Animals/AnimalModels/Pig.glb" id="1_k0g6x"]
+[ext_resource type="Script" path="res://Player/Upgrades/PigUpgrade.gd" id="2_2pxtb"]
+
+[node name="Pig" instance=ExtResource("1_k0g6x")]
+script = ExtResource("2_2pxtb")

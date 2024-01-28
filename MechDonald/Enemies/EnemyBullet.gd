@@ -2,11 +2,13 @@ extends CharacterBody3D
 
 var playerRef
 
+func _ready():
+	playerRef = get_tree().get_first_node_in_group("Player")
+
 func _physics_process(delta):
 	move_and_collide(velocity * delta)
 
-func initialize(player, pos, vel):
-	playerRef = player
+func initialize(pos, vel):
 	position = pos
 	velocity = vel
 

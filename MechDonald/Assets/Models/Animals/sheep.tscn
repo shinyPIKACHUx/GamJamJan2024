@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2dyarvbbyqd6"]
+
+[ext_resource type="PackedScene" uid="uid://t1s6nqaeo5f1" path="res://Assets/Models/Animals/AnimalModels/Sheep.glb" id="1_xhnb5"]
+[ext_resource type="Script" path="res://Player/Upgrades/SheepUpgrade.gd" id="2_a5nds"]
+
+[node name="Sheep" instance=ExtResource("1_xhnb5")]
+script = ExtResource("2_a5nds")

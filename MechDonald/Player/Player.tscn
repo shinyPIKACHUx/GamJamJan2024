@@ -3,11 +3,9 @@
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_41el3"]
 [ext_resource type="Material" uid="uid://c7aj8ux5thu3n" path="res://Materials/Player_Test_Material.tres" id="2_6bwaj"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="3_ht4nx"]
+[ext_resource type="PackedScene" uid="uid://dth5hkla7fp6f" path="res://Assets/Models/Animals/AnimalModels/Cow.glb" id="5_6qcai"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_i2xu1"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fvg5n"]
-size = Vector3(0.2, 0.2, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_1publ"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nx6vm"]
 
@@ -19,23 +17,14 @@ size = Vector3(0.2, 0.2, 1)
 albedo_color = Color(0.678431, 0.0980392, 0.533333, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849094, 0)
 script = ExtResource("1_41el3")
 speed = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_i2xu1")
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.3, 0, 1, 0)
+mesh = SubResource("BoxMesh_1publ")
 surface_material_override/0 = ExtResource("2_6bwaj")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.22553, -0.6)
-mesh = SubResource("BoxMesh_fvg5n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.22553, -0.6)
-mesh = SubResource("BoxMesh_fvg5n")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -76,3 +65,18 @@ target_position = Vector3(0, 0, -1)
 [node name="RayCast3D2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25453, -1.1)
 target_position = Vector3(0, 0, -1)
+
+[node name="Cow" parent="." instance=ExtResource("5_6qcai")]
+transform = Transform3D(-1.2984, 0, -0.0645019, 0, 1.3, 0, 0.0645019, 0, -1.2984, -0.7, -0.7, -0.15)
+
+[node name="Cow2" parent="." instance=ExtResource("5_6qcai")]
+transform = Transform3D(-1.2984, 0, -0.0645019, 0, 1.3, 0, 0.0645019, 0, -1.2984, 0.7, -0.7, -0.15)
+
+[node name="Cow5" parent="." instance=ExtResource("5_6qcai")]
+transform = Transform3D(-1.2984, 0, -0.0645019, 0, 1.3, 0, 0.0645019, 0, -1.2984, -0.0355123, 1.27778, -0.117228)
+
+[node name="Cow3" parent="." instance=ExtResource("5_6qcai")]
+transform = Transform3D(0.0627928, -1.29848, 0.00311935, -1.29688, -0.0628702, -0.0644264, 0.0645019, 6.9011e-08, -1.2984, 1.49364, 1.26563, -0.780755)
+
+[node name="Cow4" parent="." instance=ExtResource("5_6qcai")]
+transform = Transform3D(-9.81473e-08, 1.3, -1.1365e-07, 1.3, 9.81473e-08, 1.1365e-07, 1.1365e-07, -1.1365e-07, -1.3, -1.45264, 1.266, -0.911465)

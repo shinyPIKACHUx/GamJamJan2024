@@ -31,6 +31,16 @@ const MOUSE_SENSITIVITY_BASE = 0.01 # 0.08, 0.03, 0.1
 #@export var jump_total = 2.0 
 @export var gravity = GRAVITY_BASE
 
+
+#Egg Gun
+@export var egg_fire_delay : float = 1.0
+@export var egg_damage : float = 1.0
+
+#Gas Cloud
+@export var fart_duration : float = 1.0
+@export var fart_tick_speed : float = 0.1
+@export var fart_size_modifier : float = 1.0
+
 #var jump_count = 0
 #var full_contact = false
 #var cam_accel = 40

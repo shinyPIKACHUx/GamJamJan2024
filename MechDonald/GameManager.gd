@@ -18,6 +18,6 @@ func _on_mob_timer_timeout():
 	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
 	
-	mob.initialize(mob_spawn_location.position, $Player)
+	mob.initialize(mob_spawn_location.position)
 	
 	add_child(mob)
