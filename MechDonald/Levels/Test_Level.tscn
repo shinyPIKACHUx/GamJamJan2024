@@ -77,7 +77,3 @@ slowlyApproachTargetThreshold = 100.0
 finalAttractToTargetThreshold = 3.0
 targetNodePath = NodePath("../CharacterBody3D")
 slowlyApproachRate = 0.25
-
-[node name="AnimalNoiseGenerator" parent="." instance=ExtResource("7_h4oaf")]
-
-[node name="Music" parent="." instance=ExtResource("7_p11nf")]
