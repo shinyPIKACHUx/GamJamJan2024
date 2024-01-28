@@ -16,6 +16,6 @@ static func create(
 		obj = AudioStreamPlayer3D.new()
 	obj.set_name(name)
 	obj.stream = soundFile
-	obj.bus = AudioBusHelper.getBusFromEnum(busToUse)
+	obj.bus = AudioBusHelper.getBusStringFromEnum(busToUse)
 	return obj
 	

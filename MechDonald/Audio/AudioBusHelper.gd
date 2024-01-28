@@ -12,7 +12,7 @@ const busList: Array[String] = [ # speeds up getBusList
 	"Noise",
 	"Voices"
 ]
-
+# would prefer to build these from AudioServer & AudioBusLayout
 const busMap: Dictionary = {
 	"Master": ["Amplify"],
 	"Music": ["Amplify"],
@@ -36,6 +36,9 @@ static func getBusIndex(busName: String) -> int:
 			return i
 		i += 1
 	return -1 # means not found
+	
+static func getBusIndexFromEnum(busName: Enums.BusEnum) -> int:
+	return busName
 
 static func getBusEffectIndex(busName: String, effectName: String) -> Pair:
 	var busIndex = getBusIndex(busName)
@@ -52,5 +55,5 @@ static func getBusEffectByName(busName: String, effectName: String) -> AudioEffe
 	var indicies: Pair = getBusEffectIndex(busName, effectName)
 	return AudioServer.get_bus_effect(indicies.first, indicies.second)
 
-static func getBusFromEnum(busEnum: Enums.BusEnum) -> String:
+static func getBusStringFromEnum(busEnum: Enums.BusEnum) -> String:
 	return busList[busEnum]
