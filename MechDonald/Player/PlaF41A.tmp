@@ -162,6 +162,3 @@ target_position = Vector3(0, 0, -1)
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
-
-[connection signal="pressed" from="Camera3D/UI_Container/Pause/MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Resume" to="Camera3D/UI_Container/Pause" method="_on_resume_pressed"]
-[connection signal="pressed" from="Camera3D/UI_Container/Pause/MarginContainer/PauseBackground/MarginContainer/VBoxContainer/Exit to Menu" to="Camera3D/UI_Container/Pause" method="_on_exit_to_menu_pressed"]
